@@ -3,7 +3,13 @@
   "version": "0.0.1",
   "description": ".",
   "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
   "repository": ".",
   "author": "alexander0ezhov",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^32.1.0"
+  }
 }
