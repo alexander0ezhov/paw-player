@@ -1,10 +1,7 @@
 import React from "react";
+import Layout from "@Components/Layout";
 
 const App: React.FC = () => {
-  return (
-    <div>
-      test <button onClick={(e) => alert("alerting")}>BUTTON</button>
-    </div>
-  );
+  return <Layout />;
 };
 export default App;
