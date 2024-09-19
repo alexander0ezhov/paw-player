@@ -2,14 +2,24 @@ const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const isDev = process.env.NODE_ENV === "development";
+const configByMode = isDev
+  ? { mode: "development", devtool: "inline-source-map" }
+  : {};
+
 module.exports = {
+  ...configByMode,
   entry: path.resolve(__dirname, "src", "index.tsx"),
-  // entry: `client/src/index.tsx`,
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[chunkhash].js",
   },
   resolve: {
+    alias: {
+      "@root": path.resolve(__dirname, "src"),
+      "@Components": path.resolve(__dirname, "src", "Components"),
+      "@themes": path.resolve(__dirname, "src", "themes"),
+    },
     extensions: [".ts", ".tsx", ".js", ".jsx", "css"],
   },
   module: {
@@ -20,9 +30,14 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(scss)$/,
+        test: /(\.css|\.scss)$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
+        exclude: /(\.module\.css|\.module\.scss)$/i,
+      },
+      {
+        test: /(\.module\.css|\.module\.scss)$/i,
         use: [
-          MiniCssExtractPlugin.loader,
+          "style-loader",
           {
             loader: "css-loader",
             options: {
@@ -36,12 +51,16 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: "file-loader",
-          },
-        ],
+        test: /\.svg$/,
+        exclude: /\.(png)$/,
+        use: [{ loader: "@svgr/webpack" }],
+      },
+      {
+        loader: require.resolve("file-loader"),
+        exclude: /\.(js|mjs|jsx|ts|tsx|css|scss|html|json)$/,
+        options: {
+          name: "[name].[hash:8].[ext]",
+        },
       },
     ],
   },
@@ -52,7 +71,7 @@ module.exports = {
     compress: true,
     host: "0.0.0.0",
     port: 3000,
-    open: true,
+    // open: true,
   },
   plugins: [
     new HTMLWebpackPlugin({
