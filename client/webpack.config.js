@@ -20,7 +20,7 @@ module.exports = {
       "@Components": path.resolve(__dirname, "src", "Components"),
       "@themes": path.resolve(__dirname, "src", "themes"),
     },
-    extensions: [".ts", ".tsx", ".js", ".jsx", "css"],
+    extensions: [".ts", ".tsx", ".js", ".jsx", "css", "scss"],
   },
   module: {
     rules: [
@@ -77,6 +77,6 @@ module.exports = {
     new HTMLWebpackPlugin({
       template: path.resolve(__dirname, "public", "index.html"),
     }),
-    new MiniCssExtractPlugin(),
+    !isDev ? new MiniCssExtractPlugin() : undefined,
   ],
 };
