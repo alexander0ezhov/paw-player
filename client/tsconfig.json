@@ -4,7 +4,8 @@
     "paths" : {
       "@root/*": ["./*"],
       "@Components/*": ["./Components/*"],
-      "@themes/*": ["./themes/*"]
+      "@themes/*": ["./themes/*"],
+      "@assets/*": ["./assets/*"],
     },
     "target": "es5",
     "lib": [

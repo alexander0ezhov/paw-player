@@ -19,6 +19,7 @@ module.exports = {
       "@root": path.resolve(__dirname, "src"),
       "@Components": path.resolve(__dirname, "src", "Components"),
       "@themes": path.resolve(__dirname, "src", "themes"),
+      "@assets": path.resolve(__dirname, "src", "assets"),
     },
     extensions: [".ts", ".tsx", ".js", ".jsx", "css", "scss"],
   },

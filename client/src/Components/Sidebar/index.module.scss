@@ -1,4 +1,10 @@
 .root {
   background: lightsalmon;
   height: 100vh;
+  resize: vertical;
+  padding: 0.5rem;
+  width: 2rem;
+  .sidebarButton {
+    //background: red;
+  }
 }
