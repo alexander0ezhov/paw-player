@@ -58,8 +58,12 @@ module.exports = {
         use: [{ loader: "@svgr/webpack" }],
       },
       {
+        test: /\.jpg|\.jpeg|\.png$/,
+        type: "asset/resource",
+      },
+      {
         loader: require.resolve("file-loader"),
-        exclude: /\.(js|mjs|jsx|ts|tsx|css|scss|html|json)$/,
+        exclude: /\.(js|mjs|jsx|ts|tsx|css|scss|html|json|png|jpeg|jpg)$/,
         options: {
           name: "[name].[hash:8].[ext]",
         },

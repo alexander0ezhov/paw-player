@@ -6,4 +6,16 @@
   --color-primary-active: #206eb3;
   --color-primary-hover: #4384c7;
   --color-background: #cbcfd9;
+  --color-text: #ffffff;
+
+  /** text */
+  --color-text-primary: #151718;
+  --color-text-secondary: #7a7b88;
+  --color-text-disabled: #bab9b9;
+
+  /*background*/
+  --color-background-01: #dbdfe5;
+  --color-background-02: #e3e6ea;
+  --color-background-03: #e6e8ee;
+  --color-background-04: #f1f1f5;
 }

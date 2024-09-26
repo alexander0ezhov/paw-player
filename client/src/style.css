@@ -131,6 +131,12 @@ table {
 
 /* common styles */
 
-body {
-  background-color: var(--color-background);
+html {
+  background-color: var(--color-background-01);
+  color: var(--color-text-primary);
+}
+
+svg {
+  fill: var(--color-text-primary);
+  stroke: var(--color-text-primary);
 }
