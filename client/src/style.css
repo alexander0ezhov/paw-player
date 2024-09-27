@@ -131,7 +131,7 @@ table {
 
 /* common styles */
 
-html {
+body {
   /* background-color: var(--color-background-01); */
   background: radial-gradient(circle at 30%, var(--color-bg-02) 5%, var(--color-bg-01) 100%);
   color: var(--color-text-primary);
