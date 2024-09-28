@@ -2,7 +2,7 @@ import React, { RefObject, useCallback, useRef, useState } from "react";
 import cn from "classnames";
 import { IComponentProps } from "@root/global-types";
 import globalcss from "@root/global.module.scss";
-import useOnClickOutside from "@root/hooks/useOnClickOutside";
+import useOnClickOutside from "@hooks/useOnClickOutside";
 import SidebarHeader from "@Components/Sidebar/elem/SidebarHeader";
 import s from "./index.module.scss";
 

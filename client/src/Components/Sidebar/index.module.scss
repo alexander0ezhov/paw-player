@@ -4,10 +4,27 @@
   padding: 0.5rem;
   width: 2rem;
   transition: width 0.3s linear;
+  .themeToggler {
+    visibility: hidden;
+  }
   .sidebarButton {
     //background: red;
   }
   &.expanded {
     width: 20rem;
+    .themeToggler {
+      animation: 0.3s fadeIn forwards;
+    }
   }
 }
+
+
+@keyframes fadeIn {
+  99% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+

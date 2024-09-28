@@ -21,6 +21,7 @@ module.exports = {
       "@Components": path.resolve(__dirname, "src", "Components"),
       "@themes": path.resolve(__dirname, "src", "themes"),
       "@assets": path.resolve(__dirname, "src", "assets"),
+      "@hooks": path.resolve(__dirname, "src", "hooks"),
     },
     extensions: [".ts", ".tsx", ".js", ".jsx", "css", "scss"],
   },

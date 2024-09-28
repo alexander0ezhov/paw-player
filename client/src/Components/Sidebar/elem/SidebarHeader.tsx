@@ -15,7 +15,7 @@ const SidebarHeader: React.FC<ISidebarHeaderProps> = ({ toggleSize }) => {
         width="1rem"
         onClick={toggleSize}
       />
-      <ThemeToggler />
+      <ThemeToggler className={s.themeToggler} />
     </div>
   );
 };
