@@ -1,11 +1,19 @@
+$expandDelay: 200ms;
+
 .root {
   height: 100vh;
   resize: vertical;
   padding: 0.5rem;
   width: 2rem;
-  transition: width 0.3s linear;
+  transition: width $expandDelay linear;
+  .sidebarHeader {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
   .themeToggler {
     visibility: hidden;
+    display: none;
   }
   .sidebarButton {
     //background: red;
@@ -13,7 +21,8 @@
   &.expanded {
     width: 20rem;
     .themeToggler {
-      animation: 0.3s fadeIn forwards;
+      display: inherit;
+      animation: $expandDelay fadeIn forwards;
     }
   }
 }

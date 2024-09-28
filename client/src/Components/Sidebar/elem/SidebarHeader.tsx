@@ -8,7 +8,7 @@ import s from "../index.module.scss";
 
 const SidebarHeader: React.FC<ISidebarHeaderProps> = ({ toggleSize }) => {
   return (
-    <div>
+    <div className={s.sidebarHeader}>
       <SidebarMenu
         className={cn(globalcss.clickable, s.sidebarButton)}
         height="1rem"
