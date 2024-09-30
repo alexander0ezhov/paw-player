@@ -1,8 +1,8 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("node:path");
-const isDev = process.env.NODE_ENV === "development";
+const isDev: boolean = process.env.NODE_ENV === "development";
 
-const createWindow = () => {
+const createWindow = (): void => {
   const win = new BrowserWindow({
     width: 800,
     height: 600,

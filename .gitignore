@@ -4,3 +4,4 @@ yarn.lock
 
 client/dist
 out/
+node/dist

@@ -1,5 +1,5 @@
 const { contextBridge } = require("electron");
 
-contextBridge.exposeInMainWorld("api", {
+contextBridge.exposeInMainWorld("node", {
   test: () => process.versions.node,
 });
