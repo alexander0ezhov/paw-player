@@ -131,6 +131,10 @@ table {
 
 /* common styles */
 
+html {
+    font-size: 140%;
+}
+
 body {
   /* background-color: var(--color-background-01); */
   background: radial-gradient(circle at 30%, var(--color-bg-02) 5%, var(--color-bg-01) 100%);

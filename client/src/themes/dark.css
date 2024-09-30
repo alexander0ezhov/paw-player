@@ -19,10 +19,15 @@
   --color-logo-03: #2f1e5f;
   --color-logo-04: #67558a;
 
-  --color-bg-container: #252527a1;
+  --color-border: #252527;
 
-  --color-background-01: #252527;
-  --color-background-02: #222328;
-  --color-background-03: #2b2e34;
-  --color-background-04: #3f434a;
+  --color-layout-01: #252527;
+  --color-layout-02: #222328;
+  --color-layout-03: #2b2e34;
+  --color-layout-04: #3f434a;
+
+  --color-layout-alpha-01: #252527a1;
+  --color-layout-alpha-02: #222328a1;
+  --color-layout-alpha-03: #2b2e34a1;
+  --color-layout-alpha-04: #3f434aa1;
 }

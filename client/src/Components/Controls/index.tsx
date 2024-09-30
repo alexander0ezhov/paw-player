@@ -6,7 +6,7 @@ import s from "./index.module.scss";
 
 const Content: React.FC<IComponentProps> = ({ className }) => {
   return (
-    <main className={cn(s.root, globalcss.container, className)}>Controls</main>
+    <main className={cn(s.root, className)}>Controls</main>
   );
 };
 

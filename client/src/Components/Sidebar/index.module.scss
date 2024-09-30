@@ -1,26 +1,46 @@
 $expandDelay: 200ms;
 
 .root {
+  display: flex;
+  flex-direction: column;
   height: 100vh;
   resize: vertical;
   padding: 0.5rem;
   width: 2rem;
   transition: width $expandDelay linear;
+  border-right: 1px solid var(--color-border);
   .sidebarHeader {
     display: flex;
     justify-content: space-between;
     width: 100%;
   }
-  .themeToggler {
+  .themeToggler, li > .moduleName {
     visibility: hidden;
     display: none;
   }
   .sidebarButton {
     //background: red;
   }
+  .modulesSection {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-top: 0.5rem;
+    & > li {
+      height: 2rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.5rem;
+
+    }
+  }
+  .settingsButton {
+    margin-top: auto;
+  }
   &.expanded {
     width: 20rem;
-    .themeToggler {
+    .themeToggler, li > .moduleName {
       display: inherit;
       animation: $expandDelay fadeIn forwards;
     }

@@ -4,6 +4,7 @@ import { IComponentProps } from "@root/global-types";
 import globalcss from "@root/global.module.scss";
 import useOnClickOutside from "@hooks/useOnClickOutside";
 import SidebarHeader from "@Components/Sidebar/elem/SidebarHeader";
+import ModulesSection from "@Components/Sidebar/elem/ModulesSection";
 import s from "./index.module.scss";
 
 const Sidebar: React.FC<IComponentProps> = ({ className }) => {
@@ -27,6 +28,7 @@ const Sidebar: React.FC<IComponentProps> = ({ className }) => {
       ref={ref}
     >
       <SidebarHeader toggleSize={toggleExpanded} />
+      <ModulesSection />
     </aside>
   );
 };
