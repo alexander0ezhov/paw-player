@@ -11,8 +11,8 @@ const SidebarHeader: React.FC<ISidebarHeaderProps> = ({ toggleSize }) => {
     <div className={s.sidebarHeader}>
       <SidebarMenu
         className={cn(globalcss.clickable, s.sidebarButton)}
-        height="1rem"
-        width="1rem"
+        height="1.5rem"
+        width="1.5rem"
         onClick={toggleSize}
       />
       <ThemeToggler className={s.themeToggler} />
