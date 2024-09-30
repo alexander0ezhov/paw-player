@@ -1,6 +1,6 @@
 import React from "react";
-import SettingsButton from "@Components/Sidebar/elem/SettingsButton";
-import ModuleItem from "@Components/Sidebar/elem/ModuleItem";
+import SettingsButton from "@components/Sidebar/elem/SettingsButton";
+import ModuleItem from "@components/Sidebar/elem/ModuleItem";
 import { IComponentProps } from "@root/global-types";
 import s from "../index.module.scss";
 

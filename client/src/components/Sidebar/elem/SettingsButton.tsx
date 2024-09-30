@@ -1,6 +1,6 @@
 import React from "react";
 import { IComponentProps } from "@root/global-types";
-import ModuleItem from "@Components/Sidebar/elem/ModuleItem";
+import ModuleItem from "@components/Sidebar/elem/ModuleItem";
 import s from "../index.module.scss";
 
 const SettingsButton: React.FC<IComponentProps> = () => {

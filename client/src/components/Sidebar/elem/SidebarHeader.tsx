@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 import globalcss from "@root/global.module.scss";
 import { SidebarMenu } from "@assets/icons";
-import ThemeToggler from "@Components/ThemeToggler";
+import ThemeToggler from "@components/ThemeToggler";
 import { ISidebarHeaderProps } from "../types";
 import s from "../index.module.scss";
 

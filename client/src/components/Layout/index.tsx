@@ -1,8 +1,8 @@
 import React from "react";
 import { IComponentProps } from "@root/global-types";
-import Sidebar from "@Components/Sidebar";
-import Content from "@Components/Content";
-import Controls from "@Components/Controls";
+import Sidebar from "@components/Sidebar";
+import Content from "@components/Content";
+import Controls from "@components/Controls";
 import s from "./index.module.scss";
 
 const Layout: React.FC<IComponentProps> = () => {

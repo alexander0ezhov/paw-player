@@ -3,7 +3,7 @@
     "baseUrl": "src",
     "paths" : {
       "@root/*": ["./*"],
-      "@Components/*": ["./Components/*"],
+      "@components/*": ["./components/*"],
       "@themes/*": ["./themes/*"],
       "@assets/*": ["./assets/*"],
       "@hooks/*": ["./hooks/*"],
