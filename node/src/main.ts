@@ -9,8 +9,13 @@ const createWindow = (): void => {
     devTools: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
+      nodeIntegration: true,
+      enableRemoteModule: true,
+      contextIsolation: true,
+      sandbox: false,
     },
   });
+  win.openDevTools();
 
   isDev
     ? win.loadURL("http://localhost:3000/")

@@ -1,14 +1,19 @@
 {
   "compilerOptions": {
     "module": "commonjs",
+    "moduleResolution": "node",
     "types" : ["node"],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "lib" : ["esnext"],
+    "target": "esnext",
     "noImplicitAny": true,
     "sourceMap": true,
     "outDir": "./node/dist",
-    "baseUrl": "./node/main.ts"
+    "baseUrl": "./node/src"
   },
   "include": [
-    "node/**/*"
+    "node/src/**/*"
   ],
   "exclude": ["node_modules"]
 }
