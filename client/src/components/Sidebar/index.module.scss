@@ -18,7 +18,8 @@ $innerPadding: 0 0.5rem;
     width: 100%;
     padding: $innerPadding;
   }
-  .themeToggler, li > .moduleName {
+  .themeToggler,
+  li > .moduleName {
     visibility: hidden;
     display: none;
   }
@@ -37,7 +38,8 @@ $innerPadding: 0 0.5rem;
       align-items: center;
       gap: 0.5rem;
       cursor: pointer;
-      &:hover, &.active {
+      &:hover,
+      &.active {
         background-color: var(--color-layout-alpha-03);
       }
     }
@@ -47,13 +49,17 @@ $innerPadding: 0 0.5rem;
   }
   &.expanded {
     width: 20rem;
-    .themeToggler, li > .moduleName {
+    .themeToggler,
+    li > .moduleName {
       display: inherit;
       animation: $expandDelay fadeIn forwards;
     }
   }
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
-
 
 @keyframes fadeIn {
   99% {
@@ -63,4 +69,3 @@ $innerPadding: 0 0.5rem;
     visibility: visible;
   }
 }
-

@@ -1,4 +1,5 @@
 import { IComponentProps } from "@root/global-types";
+import { ReactElement } from "react";
 
 export interface ISidebarHeaderProps extends IComponentProps {
   toggleSize: () => void;
@@ -6,5 +7,5 @@ export interface ISidebarHeaderProps extends IComponentProps {
 
 export interface IModuleItemProps extends IComponentProps {
   name?: string;
-  icon: string;
+  icon: string | ReactElement;
 }
