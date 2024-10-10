@@ -5,7 +5,7 @@
     "types" : ["node"],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "lib" : ["esnext"],
+    "skipLibCheck": true,
     "target": "esnext",
     "noImplicitAny": true,
     "sourceMap": true,

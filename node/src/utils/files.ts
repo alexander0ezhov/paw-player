@@ -1,6 +1,6 @@
-const fs = require("fs");
+import fs from "fs";
 
-export const getFiles = (): any => {
+export const getFiles = (): fs.Dirent[] => {
   const files = fs.readdirSync(__dirname, {
     withFileTypes: true,
     recursive: true,

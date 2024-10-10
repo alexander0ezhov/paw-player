@@ -1,21 +1,20 @@
-const { app, BrowserWindow } = require("electron");
-const path = require("node:path");
+import path from "path";
+import { app, BrowserWindow } from "electron";
+
 const isDev: boolean = process.env.NODE_ENV === "development";
 
 const createWindow = (): void => {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
-    devTools: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       nodeIntegration: true,
-      enableRemoteModule: true,
       contextIsolation: true,
       sandbox: false,
     },
   });
-  win.openDevTools();
+  win.webContents.openDevTools();
 
   isDev
     ? win.loadURL("http://localhost:3000/")
