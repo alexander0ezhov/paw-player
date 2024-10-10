@@ -9,11 +9,13 @@
     "target": "esnext",
     "noImplicitAny": true,
     "sourceMap": true,
-    "outDir": "./node/dist",
-    "baseUrl": "./node/src"
+    "outDir": "./dist",
+    "baseUrl": "./src"
   },
   "include": [
-    "node/src/**/*"
+    "src/**/*"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -7,7 +7,7 @@
     "start:client": "cross-env NODE_ENV=development webpack serve --config ./client/webpack.config.js",
     "build:client": "cross-env NODE_ENV=production webpack --config ./client/webpack.config.js",
     "build:node": "tsc",
-    "start:electron-dev": "cross-env NODE_ENV=development concurrently \"tsc -w\" \"electron .\"",
+    "start:electron-dev": "cross-env NODE_ENV=development concurrently \"tsc -w --p node\" \"electron .\"",
     "start:electron-dist": "cross-env NODE_ENV=production electron .",
     "make": "electron-forge make",
     "start": "electron-forge start",
