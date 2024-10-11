@@ -1,5 +1,6 @@
 $expandDelay: 200ms;
 $innerPadding: 0 0.5rem;
+$shadowFilter: drop-shadow(-0.2px 0 2px var(--color-text-secondary));
 
 .root {
   display: flex;
@@ -23,29 +24,35 @@ $innerPadding: 0 0.5rem;
     visibility: hidden;
     display: none;
   }
-  .sidebarButton {
+  li {
+    padding: $innerPadding;
+    height: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    &:hover,
+    &.active {
+      background-color: var(--color-layout-alpha-03);
+      svg {
+        filter: $shadowFilter;
+      }
+    }
   }
   .modulesSection {
     display: flex;
     flex-direction: column;
     flex: 1;
     padding-top: 0.5rem;
-    & > li {
-      padding: $innerPadding;
-      height: 2rem;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-      &:hover,
-      &.active {
-        background-color: var(--color-layout-alpha-03);
-      }
-    }
   }
   .settingsButton {
     margin-top: auto;
+  }
+  .sidebarButton:hover,
+  .themeToggler:hover svg {
+    filter: $shadowFilter;
+    cursor: pointer;
   }
   &.expanded {
     width: 20rem;
