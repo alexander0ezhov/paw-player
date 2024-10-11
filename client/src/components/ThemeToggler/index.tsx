@@ -13,7 +13,7 @@ const ThemeToggler: React.FC<IComponentProps> = ({ className }) => {
 
   return (
     <span className={className} onClick={onClick}>
-      {themeMode === "light" ? <Sun /> : <Moon />}
+      {themeMode === "light" ? <Moon /> : <Sun />}
     </span>
   );
 };
