@@ -136,76 +136,11 @@ html {
 }
 
 body {
-  /* background-color: var(--color-background-01); */
-  background: radial-gradient(
-    circle at 30%,
-    var(--color-bg-02) 5%,
-    var(--color-bg-01) 100%
-  );
+  font-family: var(--font-regular), serif;
   color: var(--color-text-primary);
 }
 
 svg {
   fill: var(--color-text-primary);
   /*stroke: var(--color-text-primary);*/
-}
-
-#logo {
-  position: absolute;
-  top: 50%;
-  left: 30%;
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-  }
-
-  &::before {
-    width: 25rem;
-    height: 25rem;
-    background-color: var(--color-logo-01);
-    animation: outer-pulse 2s linear infinite alternate;
-  }
-
-  &::after {
-    width: 13rem;
-    height: 13rem;
-    border: 2rem solid var(--color-logo-03);
-    animation: inner-pulse 2s linear infinite alternate;
-    box-shadow: 0 0 0.3rem 0.3rem var(--color-logo-04);
-  }
-}
-
-@keyframes inner-pulse {
-  from {
-    width: 13rem;
-    height: 13rem;
-  }
-  to {
-    width: 15rem;
-    height: 15rem;
-  }
-}
-
-@keyframes outer-pulse {
-  from {
-    box-shadow: 0 0 1rem 1rem var(--color-logo-01);
-  }
-  to {
-    box-shadow: 0 0 1.6rem 1.6rem var(--color-logo-01);
-  }
-}
-
-@keyframes fadeIn {
-  99% {
-    visibility: hidden;
-  }
-  100% {
-    visibility: visible;
-  }
 }
