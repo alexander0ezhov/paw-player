@@ -1,18 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { IComponentProps } from "@root/global-types";
-import { checkThemeMode, toggleThemeMode } from "@root/utils/func";
 import { Moon, Sun } from "@assets/icons";
+import { useSettingsStore } from "@store/settings";
 
 const ThemeToggler: React.FC<IComponentProps> = ({ className }) => {
-  const [themeMode, setTogglerMode] = useState(checkThemeMode());
-
-  const onClick = () => {
-    const newThemeMode = toggleThemeMode();
-    setTogglerMode(newThemeMode);
-  };
+  const { themeMode, toggleThemeMode } = useSettingsStore();
 
   return (
-    <span className={className} onClick={onClick}>
+    <span className={className} onClick={toggleThemeMode}>
       {themeMode === "light" ? <Moon /> : <Sun />}
     </span>
   );

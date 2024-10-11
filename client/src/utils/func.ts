@@ -1,22 +1,8 @@
-enum themeModes {
-  dark = "dark",
-  light = "light",
-}
+import { SettingsType } from "@root/global-types";
 
-export type ThemeModeType = keyof typeof themeModes;
-
-export const setThemeMode = (mode: ThemeModeType) => {
+export const setThemeModeToDOM = (mode: SettingsType["themeMode"]) => {
   document.body.dataset.theme = mode;
 };
 
-export const toggleThemeMode = () => {
-  const newThemeMode =
-    document.body.dataset.theme === themeModes.light
-      ? themeModes.dark
-      : themeModes.light;
-  setThemeMode(newThemeMode);
-  return newThemeMode;
-};
-
-export const checkThemeMode = () =>
-  document.body.dataset.theme as keyof typeof themeModes;
+export const checkThemeModeFromDOM = () =>
+  document.body.dataset.theme as SettingsType["themeMode"];

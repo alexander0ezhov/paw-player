@@ -5,9 +5,11 @@
       "@root/*": ["./*"],
       "@components/*": ["./components/*"],
       "@themes/*": ["./themes/*"],
+      "@store/*": ["./store/*"],
       "@assets/*": ["./assets/*"],
       "@hooks/*": ["./hooks/*"],
       "@modules/*": ["./modules/*"],
+      "@utils/*": ["./utils/*"],
     },
     "target": "es5",
     "lib": [
