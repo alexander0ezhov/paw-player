@@ -7,6 +7,12 @@ const createWindow = (): void => {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    transparent: true,
+    frame: false,
+    // zoomFactor: 1.0,
+    // backgroundThrottling
+    vibrancy: "fullscreen-ui",
+    backgroundMaterial: "acrylic",
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       nodeIntegration: true,
@@ -14,7 +20,7 @@ const createWindow = (): void => {
       sandbox: false,
     },
   });
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
 
   isDev
     ? win.loadURL("http://localhost:3000/")
