@@ -4,4 +4,6 @@ import { getFiles } from "./utils/files";
 contextBridge.exposeInMainWorld("node", {
   test: () => process.versions.node,
   getFiles: () => getFiles(),
+  // saveSettings
+  // loadSettings
 });
