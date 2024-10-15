@@ -1,11 +1,15 @@
 import React from "react";
+
 import { IComponentProps } from "@root/global-types";
+
 import globalcss from "@root/global.module.scss";
 import cn from "classnames";
+import s from "../index.module.scss";
+
 import PlayPauseButton from "./PlayPauseButton";
 import RepeatButton from "./RepeatButton";
 import { NextTrack, PrevTrack, Shuffle } from "@assets/icons";
-import s from "../index.module.scss";
+
 
 const smallControlsSize = "1.3rem";
 const smallControlsProps = {
