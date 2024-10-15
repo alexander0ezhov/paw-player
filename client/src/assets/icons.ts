@@ -5,5 +5,35 @@ import { ReactComponent as Moon } from "./moon.svg";
 import { ReactComponent as Settings } from "./settings.svg";
 import { ReactComponent as Home } from "./home.svg";
 import { ReactComponent as Playlist } from "./playlist.svg";
+import { ReactComponent as Play } from "./play.svg";
+import { ReactComponent as Pause } from "./pause.svg";
+import { ReactComponent as NextTrack } from "./next-track.svg";
+import { ReactComponent as PrevTrack } from "./prev-track.svg";
+import { ReactComponent as Repeat } from "./repeat.svg";
+import { ReactComponent as RepeatOne } from "./repeat-one.svg";
+import { ReactComponent as VolumeOff } from "./volume-off.svg";
+import { ReactComponent as VolumeUp } from "./volume-up.svg";
+import { ReactComponent as VolumeDown } from "./volume-down.svg";
+import { ReactComponent as VolumeMute } from "./volume-mute.svg";
+import { ReactComponent as Shuffle } from "./shuffle.svg";
 
-export { Bars, Files, Sun, Moon, Settings, Home, Playlist };
+export {
+  Bars,
+  Files,
+  Sun,
+  Moon,
+  Settings,
+  Home,
+  Playlist,
+  Play,
+  Pause,
+  NextTrack,
+  PrevTrack,
+  Repeat,
+  RepeatOne,
+  VolumeOff,
+  VolumeUp,
+  VolumeDown,
+  VolumeMute,
+  Shuffle,
+};
