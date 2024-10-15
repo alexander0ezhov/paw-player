@@ -5,15 +5,15 @@ import { Play, Pause } from "@assets/icons";
 const isPlaying = false;
 const size = "2rem";
 
-const PlayPauseButton: React.FC<IComponentProps> = ({ className }) => {
+const PlayPauseButton: React.FC<IComponentProps> = (props) => {
   return (
-    <span className={className} onClick={() => {}}>
+    <>
       {isPlaying ? (
-        <Pause width={size} height={size} />
+        <Pause width={size} height={size} {...props} />
       ) : (
-        <Play width={size} height={size} />
+        <Play width={size} height={size} {...props} />
       )}
-    </span>
+    </>
   );
 };
 

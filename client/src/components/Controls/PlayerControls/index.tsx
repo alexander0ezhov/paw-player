@@ -1,5 +1,6 @@
 import React from "react";
 import { IComponentProps } from "@root/global-types";
+import globalcss from "@root/global.module.scss";
 import cn from "classnames";
 import PlayPauseButton from "./PlayPauseButton";
 import RepeatButton from "./RepeatButton";
@@ -17,7 +18,7 @@ const PlayerControls: React.FC<IComponentProps> = ({ className }) => {
     <div className={cn(className, s.playerControls)}>
       <RepeatButton {...smallControlsProps} />
       <PrevTrack {...smallControlsProps} />
-      <PlayPauseButton />
+      <PlayPauseButton className={globalcss.accentIcon} />
       <NextTrack {...smallControlsProps} />
       <Shuffle {...smallControlsProps} />
     </div>
