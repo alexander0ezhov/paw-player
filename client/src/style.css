@@ -144,3 +144,7 @@ svg {
   fill: var(--color-text-primary);
   /*stroke: var(--color-text-primary);*/
 }
+
+svg:hover {
+  filter: drop-shadow(-0.2px 0 2px var(--color-text-secondary));
+}

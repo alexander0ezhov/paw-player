@@ -1,17 +1,16 @@
 import React from "react";
 import cn from "classnames";
-import globalcss from "@root/global.module.scss";
 import { IComponentProps } from "@root/global-types";
-import TrackInfo from "./elem/TrackInfo";
-import PlayerControls from "./elem/PlayerControls";
-import Actions from "./elem/Actions";
+import TrackInfo from "./TrackInfo/Index";
+import Actions from "./Actions";
+import PlayerControls from "./PlayerControls";
+import ProgressBar from "./ProgressBar";
 import s from "./index.module.scss";
-import TrackSlider from "@components/Controls/elem/TrackSlider";
 
 const Content: React.FC<IComponentProps> = ({ className }) => {
   return (
     <main className={cn(s.root, className)}>
-      <TrackSlider />
+      <ProgressBar />
       <div className={s.controlsContainer}>
         <TrackInfo />
         <PlayerControls />
