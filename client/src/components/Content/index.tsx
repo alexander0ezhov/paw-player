@@ -1,8 +1,8 @@
 import React from "react";
-import { IComponentProps } from "@root/global-types";
 import cn from "classnames";
-import s from "./index.module.scss";
+import { IComponentProps } from "@root/global-types";
 import { useRoutingStore } from "@store/routing";
+import s from "./index.module.scss";
 
 const Content: React.FC<IComponentProps> = ({ className }) => {
   const { route } = useRoutingStore();

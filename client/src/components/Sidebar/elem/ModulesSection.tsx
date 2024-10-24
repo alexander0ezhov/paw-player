@@ -1,17 +1,48 @@
 import React from "react";
-import SettingsButton from "@components/Sidebar/elem/SettingsButton";
 import ModuleItem from "@components/Sidebar/elem/ModuleItem";
 import { IComponentProps, Routes } from "@root/global-types";
-import { Files, Home, Playlist } from "@assets/icons";
+import { useRoutingStore } from "@store/routing";
+import { Files, Home, Playlist, Settings } from "@assets/icons";
 import s from "../index.module.scss";
 
+const items = [
+  {
+    icon: <Home />,
+    name: Routes.Home,
+    route: Routes.Home,
+  },
+  {
+    icon: <Files />,
+    name: Routes.Files,
+    route: Routes.Files,
+  },
+  {
+    icon: <Playlist />,
+    name: Routes.Playlists,
+    route: Routes.Playlists,
+  },
+  {
+    icon: <Settings />,
+    name: Routes.Settings,
+    route: Routes.Settings,
+    isInBottom: true,
+  },
+];
+
 const ModulesSection: React.FC<IComponentProps> = () => {
+  const { redirect } = useRoutingStore();
   return (
     <ul className={s.modulesSection}>
-      <ModuleItem icon={<Home />} name={Routes.Home} />
-      <ModuleItem icon={<Files />} name={Routes.Files} />
-      <ModuleItem icon={<Playlist />} name={Routes.Playlists} />
-      <SettingsButton />
+      {items.map((item) => (
+        <ModuleItem
+          className={item.isInBottom && s.bottomItem}
+          icon={item.icon}
+          name={item.name}
+          onClick={() => {
+            redirect(item.route);
+          }}
+        />
+      ))}
     </ul>
   );
 };

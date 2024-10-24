@@ -19,6 +19,7 @@ export enum Routes {
   Home = "Home",
   Files = "Files",
   Playlists = "Playlists",
+  Settings = "Settings",
 }
 
 export type RoutingType = {

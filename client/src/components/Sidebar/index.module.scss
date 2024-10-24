@@ -46,8 +46,9 @@ $shadowFilter: drop-shadow(-0.2px 0 2px var(--color-text-secondary));
     flex: 1;
     padding-top: 0.5rem;
   }
-  .settingsButton {
+  .bottomItem    {
     margin-top: auto;
+    order: 10;
   }
   .sidebarButton:hover,
   .themeToggler:hover svg {
