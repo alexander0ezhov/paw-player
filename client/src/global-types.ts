@@ -13,3 +13,14 @@ export enum ThemeModes {
 export type SettingsType = {
   themeMode: keyof typeof ThemeModes;
 };
+
+export enum Routes {
+  Root = "Root",
+  Home = "Home",
+  Files = "Files",
+  Playlists = "Playlists",
+}
+
+export type RoutingType = {
+  route: keyof typeof Routes;
+};

@@ -8,4 +8,5 @@ export interface ISidebarHeaderProps extends IComponentProps {
 export interface IModuleItemProps extends IComponentProps {
   name?: string;
   icon: string | ReactElement;
+  [key: string]: any;
 }
