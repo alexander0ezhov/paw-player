@@ -1,5 +1,5 @@
 import path from "path";
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, ipcMain, dialog } from "electron";
 
 const isDev: boolean = process.env.NODE_ENV === "development";
 
@@ -31,4 +31,18 @@ app.whenReady().then(() => {
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
+});
+
+ipcMain.on("open-file-dialog", function (event) {
+  console.log("event is received");
+  dialog
+    // .showOpenDialog({ properties: ["openFile", "openDirectory"] }) // for dir
+    .showOpenDialog({ properties: ["openFile"] })
+    .then(function (response) {
+      if (!response.canceled) {
+        console.log(response.filePaths[0]);
+      } else {
+        console.log("no file selected");
+      }
+    });
 });
