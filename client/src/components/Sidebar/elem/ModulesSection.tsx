@@ -35,6 +35,7 @@ const ModulesSection: React.FC<IComponentProps> = () => {
     <ul className={s.modulesSection}>
       {items.map((item) => (
         <ModuleItem
+          key={item.name}
           className={item.isInBottom && s.bottomItem}
           icon={item.icon}
           name={item.name}

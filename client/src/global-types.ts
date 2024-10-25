@@ -25,3 +25,13 @@ export enum Routes {
 export type RoutingType = {
   route: keyof typeof Routes;
 };
+
+export type TrackType = {
+  src: string;
+};
+
+export type PlayerType = {
+  // audio: HTMLAudioElement;
+  currentTrack?: TrackType;
+  isPlaying: boolean;
+};
