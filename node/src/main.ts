@@ -33,16 +33,17 @@ app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
 });
 
-ipcMain.on("open-file-dialog", function (event) {
-  console.log("event is received");
-  dialog
-    // .showOpenDialog({ properties: ["openFile", "openDirectory"] }) // for dir
-    .showOpenDialog({ properties: ["openFile"] })
-    .then(function (response) {
-      if (!response.canceled) {
-        console.log(response.filePaths[0]);
-      } else {
-        console.log("no file selected");
-      }
-    });
+ipcMain.handle("get-music-directory", async () => {
+  const openedDialog = await dialog.showOpenDialog({
+    properties: ["openFile", "openDirectory"],
+  });
+  return openedDialog.filePaths?.[0];
+});
+
+ipcMain.handle("get-music-files", async () => {
+  const openedDialog = await dialog.showOpenDialog({
+    properties: ["openFile", "multiSelections"],
+    filters: [{ name: "Music", extensions: ["mp3"] }],
+  });
+  return openedDialog.filePaths;
 });

@@ -6,10 +6,19 @@ import s from "./index.module.scss";
 
 const Content: React.FC<IComponentProps> = ({ className }) => {
   const { route } = useRoutingStore();
+  const getMusicFiles = async () => {
+    const musicList = await window.node.getMusicFiles();
+    console.log(musicList);
+  };
+  const getMusicDirectory = async () => {
+    const musicList = await window.node.getMusicDirectory();
+    console.log(musicList);
+  };
   return (
     <main className={cn(s.root, className)}>
       {route}
-      <button onClick={window.node.openFileDialog}>Найти музыку</button>
+      <button onClick={getMusicFiles}>Найти музыку</button>
+      <button onClick={getMusicDirectory}>открыть папку</button>
     </main>
   );
 };
