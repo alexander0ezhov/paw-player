@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 import { IComponentProps } from "@root/global-types";
 
@@ -18,11 +18,18 @@ const smallControlsProps = {
 
 const PlayerControls: React.FC<IComponentProps> = ({ className }) => {
   const audio = useRef<HTMLAudioElement>(new Audio()).current;
+  const [isPlaying, setIsPlaying] = useState(false);
 
   console.log(audio);
 
-  const play = () => audio.play();
-  const pause = () => audio.pause();
+  const play = () => {
+    audio.play();
+    setIsPlaying(true);
+  };
+  const pause = () => {
+    audio.pause();
+    setIsPlaying(false);
+  };
   // const setVolume = (value) => (audioRef.current.volume = value);
 
   return (
@@ -31,6 +38,7 @@ const PlayerControls: React.FC<IComponentProps> = ({ className }) => {
       <PrevTrack {...smallControlsProps} />
       <PlayPauseButton
         className={globalcss.accentIcon}
+        isPlaying={isPlaying}
         onPlay={play}
         onPause={pause}
       />

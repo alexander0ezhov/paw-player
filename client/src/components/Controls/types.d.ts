@@ -11,4 +11,5 @@ type RepeatType = "all" | "one" | null;
 interface IPlayPauseButtonProps extends IComponentProps {
   onPlay: any;
   onPause: on;
+  isPlaying: boolean;
 }

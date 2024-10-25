@@ -9,7 +9,7 @@ export const getFiles = (): fs.Dirent[] => {
   return files;
 };
 
-export const readFile = (): string => {
-  const file = fs.readFileSync("~/tools/sample.mp3");
+export const readFile = (path: string): string => {
+  const file = fs.readFileSync(path);
   return "data:audio/mp3;base64," + file.toString("base64");
 };
