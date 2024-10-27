@@ -9,6 +9,7 @@
       "@assets/*": ["./assets/*"],
       "@hooks/*": ["./hooks/*"],
       "@modules/*": ["./modules/*"],
+      "@pages/*": ["./pages/*"],
       "@utils/*": ["./utils/*"],
     },
     "target": "es5",
