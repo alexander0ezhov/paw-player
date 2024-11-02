@@ -1,5 +1,4 @@
 import { IComponentProps } from "@root/global-types";
-import audio from "@components/Controls/PlayerControls/Audio";
 
 interface IControlIconProps extends IComponentProps {
   width: number | string;

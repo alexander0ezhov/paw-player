@@ -10,3 +10,10 @@
 .accentIcon {
   fill: var(--color-primary);
 }
+
+.page {
+  padding: 0.5rem;
+  .pageBody {
+    margin-top: 1rem;
+  }
+}

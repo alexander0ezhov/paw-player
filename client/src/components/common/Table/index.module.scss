@@ -1,0 +1,10 @@
+.root {
+  display: grid;
+  .header {
+    border: 1px solid gray;
+    border-top: 0;
+  }
+  & > * {
+    border: 1px solid gray;
+  }
+}
