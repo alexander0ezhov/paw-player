@@ -3,13 +3,14 @@ import cn from "classnames";
 import { ITableComponentProps } from "./types";
 import Headers from "./Headers";
 import s from "./index.module.scss";
+import { splitColumnsByVisibility } from "./util";
 
 const Table: React.FC<ITableComponentProps> = ({
   className,
   columns,
   items,
 }) => {
-  const visibleColumns = columns.filter((col) => !col.hidden); // TODO: nonVisibleColumns
+  const { hiddenColumns, visibleColumns } = splitColumnsByVisibility(columns);
   return (
     <div
       className={cn(className, s.root)}
