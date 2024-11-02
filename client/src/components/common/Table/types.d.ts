@@ -7,6 +7,7 @@ type ColumnType = {
 };
 
 type TableItemType = {
+  key: string;
   [k: string]: any;
 };
 

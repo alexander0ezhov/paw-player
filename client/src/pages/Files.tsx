@@ -1,6 +1,7 @@
 import React from "react";
 import { IComponentProps } from "@root/global-types";
 import Table from "@components/common/Table";
+import globalcss from "@root/global.module.scss";
 
 const Files: React.FC<IComponentProps> = () => {
   const getMusicFiles = async () => {
@@ -17,10 +18,11 @@ const Files: React.FC<IComponentProps> = () => {
       <button onClick={getMusicDirectory}>Открыть папку</button>
 
       <Table
+        className={globalcss.mt1}
         columns={[{ name: "name" }, { name: "path" }]}
         items={[
-          { name: "qwe", path: "path1" },
-          { name: "123", path: "432" },
+          { key: "qwe", name: "qwe", path: "path1" },
+          { key: "123", name: "123", path: "432" },
         ]}
       />
     </div>
