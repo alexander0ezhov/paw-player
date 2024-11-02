@@ -13,7 +13,7 @@ const Files: React.FC<IComponentProps> = () => {
     console.log(musicList);
   };
   return (
-    <div>
+    <>
       <button onClick={getMusicFiles}>Найти музыку</button>
       <button onClick={getMusicDirectory}>Открыть папку</button>
 
@@ -25,7 +25,7 @@ const Files: React.FC<IComponentProps> = () => {
           { key: "123", name: "123", path: "432" },
         ]}
       />
-    </div>
+    </>
   );
 };
 

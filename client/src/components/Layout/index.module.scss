@@ -14,7 +14,10 @@
     flex: 1;
     height: 100vh;
     .content {
-      height: 100%;
+      height: calc(100vh - 3rem);
+    }
+    .controls {
+      height: 3rem;
     }
   }
 }
