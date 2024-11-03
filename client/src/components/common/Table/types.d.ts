@@ -7,13 +7,13 @@ type ColumnType = {
 };
 
 type TableItemType = {
-  key: string;
   [k: string]: any;
 };
 
 export interface ITableComponentProps extends IComponentProps {
   columns: ColumnType[];
   items: TableItemType[];
+  keyField: string;
 }
 
 export interface IHeadersComponentProps extends IComponentProps {

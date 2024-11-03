@@ -35,3 +35,7 @@ export type PlayerType = {
   currentTrack?: TrackType;
   isPlaying: boolean;
 };
+
+export type FileType = {
+  name: string;
+};

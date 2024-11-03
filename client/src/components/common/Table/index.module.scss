@@ -1,6 +1,6 @@
 .root {
   display: grid;
-  overflow-y: scroll;
+  overflow-y: auto;
   .header {
     font-size: 0.65rem;
     color: var(--color-text-secondary)
