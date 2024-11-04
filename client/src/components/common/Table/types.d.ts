@@ -1,8 +1,9 @@
 import { IComponentProps } from "@root/global-types";
 
 type ColumnType = {
+  key: string;
   name: string;
-  width?: number;
+  width?: number | string;
   hidden?: boolean;
 };
 
@@ -13,9 +14,13 @@ type TableItemType = {
 export interface ITableComponentProps extends IComponentProps {
   columns: ColumnType[];
   items: TableItemType[];
-  keyField: string;
 }
 
 export interface IHeadersComponentProps extends IComponentProps {
   columns: ColumnType[];
+}
+
+export interface IRowComponentProps extends IComponentProps {
+  columns: ColumnType[];
+  item: TableItemType;
 }

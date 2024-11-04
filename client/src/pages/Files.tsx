@@ -12,8 +12,11 @@ const Files: React.FC<IComponentProps> = () => {
       <button onClick={getDirectory}>Открыть папку</button>
       <Table
         className={globalcss.mt1}
-        columns={[{ name: "name" }, { name: "path" }]}
-        keyField={"name"}
+        columns={[
+          { key: "name", name: "name", width: "30%" },
+          { key: "path", name: "path", width: "40%" },
+        ]}
+        // keyField={"name"}
         items={filesList}
       />
     </>

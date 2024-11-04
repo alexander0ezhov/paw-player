@@ -3,13 +3,15 @@ import { IHeadersComponentProps } from "./types";
 import s from "./index.module.scss";
 
 const Headers: React.FC<IHeadersComponentProps> = ({ columns }) => {
-  return columns.map((column) => (
-    <div className={s.header} key={column.name}>
-      {column.name}
+  return (
+    <div className={s.tHeaders}>
+      {columns.map((column) => (
+        <div className={s.tHeader} key={column.name}>
+          {column.name}
+        </div>
+      ))}
     </div>
-  ));
+  );
 };
-
-// TODO: memoize
 
 export default Headers;
