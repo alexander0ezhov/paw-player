@@ -1,6 +1,6 @@
 import path from "path";
 import { app, BrowserWindow, ipcMain, dialog } from "electron";
-import { getFileMetaData } from "./utils/files";
+import { getFileMetaData, loadMusicMetadataModule } from "./utils/files";
 
 const isDev: boolean = process.env.NODE_ENV === "development";
 
@@ -23,6 +23,7 @@ const createWindow = (): void => {
 };
 
 app.whenReady().then(() => {
+  loadMusicMetadataModule();
   createWindow();
 
   app.on("activate", () => {
