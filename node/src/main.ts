@@ -1,5 +1,6 @@
 import path from "path";
 import { app, BrowserWindow, ipcMain, dialog } from "electron";
+import { getFileMetaData } from "./utils/files";
 
 const isDev: boolean = process.env.NODE_ENV === "development";
 
@@ -45,5 +46,5 @@ ipcMain.handle("get-music-files", async () => {
     properties: ["openFile", "multiSelections"],
     filters: [{ name: "Music", extensions: ["mp3"] }],
   });
-  return openedDialog.filePaths;
+  return await Promise.all(openedDialog.filePaths.map(getFileMetaData));
 });
