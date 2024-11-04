@@ -1,8 +1,8 @@
 import { create } from "zustand";
-import { FileType } from "@root/global-types";
+import { TrackType } from "@root/global-types";
 
 type State = {
-  filesList: FileType[];
+  filesList: TrackType[];
 };
 type Actions = {
   getFiles: () => void;

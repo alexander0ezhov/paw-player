@@ -26,10 +26,6 @@ export type RoutingType = {
   route: keyof typeof Routes;
 };
 
-export type TrackType = {
-  src: string;
-};
-
 export type PlayerType = {
   // audio: HTMLAudioElement;
   currentTrack?: TrackType;
@@ -38,4 +34,9 @@ export type PlayerType = {
 
 export type FileType = {
   name: string;
+  path: string;
+};
+
+export type TrackType = FileType & {
+  src?: string;
 };

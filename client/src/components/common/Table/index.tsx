@@ -10,12 +10,13 @@ const Table: React.FC<ITableComponentProps> = ({
   className,
   columns = [],
   items = [],
+  onItemClick,
 }) => {
   const { hiddenColumns, visibleColumns } = splitColumnsByVisibility(columns);
   return (
     <div className={cn(className, s.root)}>
       {/*<Headers columns={visibleColumns} />*/}
-      <Body columns={visibleColumns} items={items} />
+      <Body columns={visibleColumns} items={items} onItemClick={onItemClick} />
     </div>
   );
 };

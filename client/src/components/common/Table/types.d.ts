@@ -8,12 +8,13 @@ type ColumnType = {
 };
 
 type TableItemType = {
-  [k: string]: any;
+  [key: string]: any;
 };
 
 export interface ITableComponentProps extends IComponentProps {
   columns: ColumnType[];
   items: TableItemType[];
+  onItemClick?: (item: TableItemType) => void;
 }
 
 export interface IHeadersComponentProps extends IComponentProps {
@@ -23,4 +24,5 @@ export interface IHeadersComponentProps extends IComponentProps {
 export interface IRowComponentProps extends IComponentProps {
   columns: ColumnType[];
   item: TableItemType;
+  onClick?: () => void;
 }
