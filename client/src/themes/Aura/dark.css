@@ -31,13 +31,6 @@
   --color-layout-alpha-03: #2b2e34a1;
   --color-layout-alpha-04: #3f434aa1;
 
-  --color-layout-alpha-low-01: #252527cc;
-  --color-layout-alpha-low-02: #222328cc;
-  --color-layout-alpha-low-03: #2b2e34cc;
-  --color-layout-alpha-low-04: #3f434acc;
-
-  --color-layout-alpha-high-01: #25252766;
-  --color-layout-alpha-high-02: #22232866;
-  --color-layout-alpha-high-03: #2b2e3466;
-  --color-layout-alpha-high-04: #3f434a66;
+  --color-content-background: #25252744;
+  --color-controls-background: #25252766;
 }

@@ -6,9 +6,13 @@ const Headers: React.FC<IHeadersComponentProps> = ({ columns }) => {
   return (
     <div className={s.tHeaders}>
       {columns.map((column) => (
-        <div className={s.tHeader} key={column.name}>
+        <span
+          className={s.tHeader}
+          style={column.width ? { width: column.width } : { flex: 1 }}
+          key={column.name}
+        >
           {column.name}
-        </div>
+        </span>
       ))}
     </div>
   );

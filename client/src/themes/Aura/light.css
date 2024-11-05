@@ -33,13 +33,6 @@
   --color-layout-alpha-03: #e6e8eea1;
   --color-layout-alpha-04: #f1f1f5a1;
 
-  --color-layout-alpha-low-01: #dbdfe5cc;
-  --color-layout-alpha-low-02: #e3e6eacc;
-  --color-layout-alpha-low-03: #e6e8eecc;
-  --color-layout-alpha-low-04: #f1f1f5cc;
-
-  --color-layout-alpha-high-01: #dbdfe566;
-  --color-layout-alpha-high-02: #e3e6ea66;
-  --color-layout-alpha-high-03: #e6e8ee66;
-  --color-layout-alpha-high-04: #f1f1f566;
+  --color-content-background: #dbdfe544;
+  --color-controls-background: #dbdfe566;
 }
