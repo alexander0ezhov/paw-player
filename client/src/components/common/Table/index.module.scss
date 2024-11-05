@@ -3,7 +3,7 @@
   flex-direction: column;
   overflow-x: auto;
   .tHeaders {
-    font-size: 0.65rem;
+    font-size: 0.8rem;
     color: var(--color-text-secondary);
     flex: 0 1;
   }
@@ -18,7 +18,7 @@
     width: 100%;
     padding: 0.5rem;
     gap: 0.5rem;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid var(--color-text-secondary);
   }
   .tRow {
     font-size: 0.8rem;
@@ -28,5 +28,8 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+  .tHeader:not(:last-child) {
+    border-right: 1px solid var(--color-text-secondary);
   }
 }

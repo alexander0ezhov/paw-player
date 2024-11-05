@@ -21,6 +21,7 @@ const Files: React.FC<IComponentProps> = () => {
         ]}
         onItemClick={(item) => setCurrentTrack(item as TrackType)}
         // keyField={"name"}
+        // items={filesList}
         items={[
           { name: "123", path: "231112" },
           { name: "243243243", path: "231§sdsdascads112" },
