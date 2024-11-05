@@ -12,3 +12,9 @@ interface IPlayPauseButtonProps extends IComponentProps {
   onPause: on;
   isPlaying: boolean;
 }
+
+interface IPlayerControlsProps extends IComponentProps {
+  play: () => void;
+  pause: () => void;
+  isPlaying: boolean;
+}
