@@ -6,15 +6,19 @@ import Row from "@components/common/Table/Row";
 const Body: React.FC<ITableComponentProps> = ({
   columns,
   items,
+  keyColumn,
   onItemClick,
+  onItemDbClick,
 }) => {
   return (
     <div className={s.tBody}>
       {items.map((item) => (
         <Row
+          key={item[keyColumn]}
           columns={columns}
           item={item}
           onClick={() => onItemClick?.(item)}
+          onDoubleClick={() => onItemDbClick?.(item)}
         />
       ))}
     </div>

@@ -9,7 +9,7 @@ const Headers: React.FC<IHeadersComponentProps> = ({ columns }) => {
         <span
           className={s.tHeader}
           style={column.width ? { width: column.width } : { flex: 1 }}
-          key={column.name}
+          key={column.key}
         >
           {column.name}
         </span>

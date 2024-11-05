@@ -3,8 +3,9 @@
   --color-black: #000000;
   --color-white: #ffffff;
   --color-primary: #7890db;
-  --color-primary-active: #206eb3;
-  --color-primary-hover: #4384c7;
+  --color-accent: #206eb3;
+  /*--color-primary-active: #206eb3;*/
+  /*--color-primary-hover: #4384c7;*/
 
   /** text */
   --color-text-primary: #dde0e5;

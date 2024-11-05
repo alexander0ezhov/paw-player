@@ -25,14 +25,14 @@ body {
     width: 25rem;
     height: 25rem;
     background-color: var(--color-logo-01);
-    animation: outer-pulse 2s linear infinite alternate;
+    animation: outer-pulse 8s linear infinite alternate;
   }
 
   &::after {
     width: 13rem;
     height: 13rem;
     border: 2rem solid var(--color-logo-03);
-    animation: inner-pulse 2s linear infinite alternate;
+    animation: inner-pulse 8s linear infinite alternate;
     box-shadow: 0 0 0.3rem 0.3rem var(--color-logo-04);
   }
 }

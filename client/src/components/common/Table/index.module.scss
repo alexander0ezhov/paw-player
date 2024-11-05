@@ -13,7 +13,8 @@
     flex: 1;
     flex-direction: column;
   }
-  .tRow, .tHeaders {
+  .tRow,
+  .tHeaders {
     display: flex;
     width: 100%;
     padding: 0.5rem;
@@ -23,8 +24,15 @@
   .tRow {
     font-size: 0.8rem;
     flex: 1;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--color-layout-alpha-01);
+    }
   }
-  .tCell, .tHeader {
+  .tCell,
+  .tHeader {
+    display: inline-flex;
+    align-items: center;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
