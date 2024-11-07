@@ -1,0 +1,32 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background-color: var(--color-input);
+  color: var(--color-text-primary);
+  border-radius: 0.3rem;
+  cursor: pointer;
+  height: 2rem;
+  &.left {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+  &.right {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+  &:hover {
+    background-color: var(--color-input-hover);
+  }
+
+  .button {
+    height: 100%;
+    font-size: 0.7rem;
+    background: transparent;
+    outline: none;
+    border: none;
+    pointer-events: none;
+    color: var(--color-text-primary);
+  }
+}

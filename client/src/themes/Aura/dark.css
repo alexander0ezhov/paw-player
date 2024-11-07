@@ -2,10 +2,14 @@
   /** colors */
   --color-black: #000000;
   --color-white: #ffffff;
-  --color-primary: #7890db;
-  --color-accent: #206eb3;
-  /*--color-primary-active: #206eb3;*/
-  /*--color-primary-hover: #4384c7;*/
+  --color-accent: #7890db;
+  --color-primary: #206eb3;
+  --color-primary-active: #206eb3;
+  --color-primary-hover: #4384c7;
+
+  --color-input: #2c2e32;
+  --color-input-hover: #767c85;
+  /*--color-input-active: #c1c6cd;*/
 
   /** text */
   --color-text-primary: #dde0e5;
