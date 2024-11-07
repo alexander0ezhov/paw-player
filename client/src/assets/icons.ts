@@ -19,6 +19,7 @@ import { ReactComponent as VolumeDown } from "./volume-down.svg";
 import { ReactComponent as VolumeMute } from "./volume-mute.svg";
 import { ReactComponent as Shuffle } from "./shuffle.svg";
 import { ReactComponent as Audio } from "./audio.svg";
+import { ReactComponent as Add } from "./add.svg";
 
 export {
   Bars,
@@ -42,4 +43,5 @@ export {
   VolumeMute,
   Shuffle,
   Audio,
+  Add,
 };

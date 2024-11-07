@@ -6,6 +6,8 @@ import { useFilesStore } from "@store/files";
 import { usePlayerStore } from "@store/player";
 import PageWrapper from "@components/common/PageWrapper";
 import PlayItem from "@components/common/PlayItem";
+import Header from "@components/common/Header";
+import FilesSection from "@components/sections/Files";
 import { TableItemType } from "@components/common/Table/types";
 
 const Files: React.FC<IComponentProps> = () => {
@@ -44,9 +46,9 @@ const Files: React.FC<IComponentProps> = () => {
   ];
 
   return (
-    <PageWrapper hasLayout>
-      <button onClick={getFiles}>Найти музыку</button>
-      <button onClick={getDirectory}>Открыть папку</button>
+    <PageWrapper className={globalcss.page} hasLayout>
+      <Header>Files</Header>
+      <FilesSection getFiles={getFiles} getDirectory={getDirectory} />
       <Table
         className={globalcss.mt1}
         columns={columns}
