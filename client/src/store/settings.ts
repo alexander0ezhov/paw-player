@@ -27,7 +27,10 @@ type Actions = {
 
 export const useSettingsStore = create<State & Actions>((set) => ({
   ...settings,
-  setThemeMode: (themeMode) => set({ themeMode }),
+  setThemeMode: (themeMode) => {
+    set({ themeMode });
+    setThemeModeToDOM(themeMode);
+  },
   toggleThemeMode: () =>
     set((state) => {
       const newThemeMode =
