@@ -1,4 +1,4 @@
-import { IComponentProps } from "@root/global-types";
+import { IComponentProps, TrackType } from "@root/global-types";
 
 interface IControlIconProps extends IComponentProps {
   width: number | string;
@@ -17,4 +17,9 @@ interface IPlayerControlsProps extends IComponentProps {
   play: () => void;
   pause: () => void;
   isPlaying: boolean;
+}
+
+interface IProgressBarProps extends IComponentProps {
+  audio: HTMLAudioElement;
+  currentTrack?: TrackType;
 }

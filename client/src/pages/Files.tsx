@@ -41,8 +41,9 @@ const Files: React.FC<IComponentProps> = () => {
         );
       },
     },
-    { key: "name", name: "name", width: "30%" },
-    { key: "path", name: "path", width: "70%" },
+    { key: "name", name: "name", width: "20%" },
+    { key: "path", name: "path", width: "60%" },
+    { key: "clientDuration", name: "clientDuration", width: "20%" },
   ];
 
   return (

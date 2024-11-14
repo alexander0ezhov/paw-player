@@ -13,7 +13,7 @@ export const usePlayerStore = create<State & Actions>((set, get) => {
   audio.onplay = () => set({ isPlaying: true });
   audio.onpause = () => set({ isPlaying: false });
   return {
-    // audio,
+    audio,
     isPlaying: false,
     currentTrack: undefined,
     setCurrentTrack: async (track) => {

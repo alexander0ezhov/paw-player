@@ -27,7 +27,7 @@ export type RoutingType = {
 };
 
 export type PlayerType = {
-  // audio: HTMLAudioElement;
+  audio: HTMLAudioElement;
   currentTrack?: TrackType;
   isPlaying: boolean;
 };
@@ -35,6 +35,8 @@ export type PlayerType = {
 export type FileType = {
   name: string;
   path: string;
+  duration?: number;
+  clientDuration?: string;
 };
 
 export type TrackType = FileType & {

@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useMemo } from "react";
 import cn from "classnames";
-import { IComponentProps } from "@root/global-types";
 import Progress from "./Progress";
 import s from "../index.module.scss";
+import { IProgressBarProps } from "@components/Controls/types";
 
-const currentTime = "0:00";
-const length = "3:54";
+const nullTime = "0:00";
 
-const ProgressBar: React.FC<IComponentProps> = ({ className }) => {
+const ProgressBar: React.FC<IProgressBarProps> = ({
+  className,
+  audio,
+  currentTrack,
+}) => {
   return (
     <div className={cn(className, s.progressBar)}>
-      {currentTime}
+      <span>{nullTime}</span>
       <Progress />
-      {length}
+      <span>{currentTrack?.clientDuration || nullTime}</span>
     </div>
   );
 };
