@@ -1,20 +1,55 @@
-import React, { useMemo } from "react";
+import React, { ChangeEvent, useCallback, useEffect, useRef } from "react";
 import cn from "classnames";
-import Progress from "./Progress";
 import s from "../index.module.scss";
 import { IProgressBarProps } from "@components/Controls/types";
+import { createInterval } from "@utils/func";
 
 const nullTime = "0:00";
+const interval = createInterval();
 
 const ProgressBar: React.FC<IProgressBarProps> = ({
   className,
   audio,
   currentTrack,
+  isPlaying,
 }) => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    const updateSeek = () => {
+      if (inputRef.current)
+        inputRef.current.value = `${Math.floor(audio.currentTime)}`;
+    };
+    audio.onseeked = updateSeek;
+    if (isPlaying) {
+      interval.action(updateSeek);
+    } else {
+      interval.clear();
+    }
+    return () => {
+      interval.clear();
+      audio.onseeked = null;
+    };
+  }, [isPlaying]);
+
+  const onInputChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) =>
+      (audio.currentTime = Number(e.target.value)),
+    [audio.src],
+  );
+
   return (
     <div className={cn(className, s.progressBar)}>
-      <span>{nullTime}</span>
-      <Progress />
+      <span id="currentTime">{nullTime}</span>
+      <input
+        ref={inputRef}
+        className={className}
+        type="range"
+        min={0}
+        max={currentTrack?.duration || 0}
+        step={1}
+        onChange={onInputChange}
+      />
       <span>{currentTrack?.clientDuration || nullTime}</span>
     </div>
   );

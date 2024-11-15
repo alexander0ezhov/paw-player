@@ -12,7 +12,11 @@ const Controls: React.FC<IComponentProps> = ({ className }) => {
   const { audio, currentTrack, isPlaying, play, pause } = usePlayerStore();
   return (
     <main className={cn(s.root, className)}>
-      <ProgressBar audio={audio} currentTrack={currentTrack} />
+      <ProgressBar
+        audio={audio}
+        currentTrack={currentTrack}
+        isPlaying={isPlaying}
+      />
       <div className={s.controlsContainer}>
         <TrackInfo />
         <PlayerControls isPlaying={isPlaying} play={play} pause={pause} />

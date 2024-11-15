@@ -22,4 +22,5 @@ interface IPlayerControlsProps extends IComponentProps {
 interface IProgressBarProps extends IComponentProps {
   audio: HTMLAudioElement;
   currentTrack?: TrackType;
+  isPlaying: boolean;
 }
