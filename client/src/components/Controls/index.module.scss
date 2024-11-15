@@ -36,27 +36,30 @@
       background: transparent;
       cursor: pointer;
       width: 100%;
+      overflow: hidden;
+      border-radius: 1rem;
       &:focus {
         outline: none;
       }
       &::-webkit-slider-runnable-track {
         background-color: var(--color-input);
-        height: 0.3rem;
+        height: 0.5rem;
       }
       &::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        height: 0.9rem;
-        width: 0.9rem;
+        height: 0.5rem;
+        width: 0.5rem;
         border-radius: 50%;
-        margin-top: -0.24rem;
-        background-color: var(--color-accent);
-        border: 3px solid var(--color-input);
+        //margin-top: -0.24rem;
+        background-color: var(--color-text-primary);
+        //border: 3px solid var(--color-input);
+        box-shadow: -100vmax 0 0 calc(100vmax - 0.25rem) var(--color-accent);
       }
-      &:focus::-webkit-slider-thumb {
-        outline: 1px solid var(--color-text-primary);
-        outline-offset: 0.05rem;
-      }
+      //&:focus::-webkit-slider-thumb {
+      //  outline: 1px solid var(--color-text-primary);
+      //  outline-offset: 0.05rem;
+      //}
     }
   }
 }
