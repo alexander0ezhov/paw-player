@@ -2,7 +2,7 @@ import React, { ChangeEvent, useCallback, useEffect, useRef } from "react";
 import cn from "classnames";
 import s from "../index.module.scss";
 import { IProgressBarProps } from "@components/Controls/types";
-import { createInterval } from "@utils/func";
+import { createInterval, secondsToTime } from "@utils/func";
 
 const nullTime = "0:00";
 const interval = createInterval();
@@ -14,11 +14,14 @@ const ProgressBar: React.FC<IProgressBarProps> = ({
   isPlaying,
 }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const currentTimeRef = useRef<HTMLSpanElement | null>(null);
 
   useEffect(() => {
     const updateSeek = () => {
       if (inputRef.current)
         inputRef.current.value = `${Math.floor(audio.currentTime)}`;
+      if (currentTimeRef.current)
+        currentTimeRef.current.innerText = secondsToTime(audio.currentTime);
     };
     audio.onseeked = updateSeek;
     if (isPlaying) {
@@ -40,7 +43,7 @@ const ProgressBar: React.FC<IProgressBarProps> = ({
 
   return (
     <div className={cn(className, s.progressBar)}>
-      <span id="currentTime">{nullTime}</span>
+      <span ref={currentTimeRef}>{nullTime}</span>
       <input
         ref={inputRef}
         className={className}
