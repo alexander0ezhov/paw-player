@@ -142,7 +142,7 @@ body {
 
 svg {
   fill: var(--color-text-primary);
-  /*stroke: var(--color-text-primary);*/
+  transition: filter 0.1s ease-in-out;
 }
 
 svg:hover {
