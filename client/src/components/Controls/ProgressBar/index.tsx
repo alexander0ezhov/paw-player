@@ -1,8 +1,9 @@
 import React, { ChangeEvent, useCallback, useEffect, useRef } from "react";
 import cn from "classnames";
-import s from "../index.module.scss";
+import InputRange from "@components/common/InputRange";
 import { IProgressBarProps } from "@components/Controls/types";
 import { createInterval, secondsToTime } from "@utils/func";
+import s from "../index.module.scss";
 
 const nullTime = "0:00";
 const interval = createInterval();
@@ -44,7 +45,7 @@ const ProgressBar: React.FC<IProgressBarProps> = ({
   return (
     <div className={cn(className, s.progressBar)}>
       <span ref={currentTimeRef}>{nullTime}</span>
-      <input
+      <InputRange
         ref={inputRef}
         className={className}
         type="range"
