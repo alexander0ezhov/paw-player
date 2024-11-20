@@ -20,7 +20,7 @@ const Controls: React.FC<IComponentProps> = ({ className }) => {
       <div className={s.controlsContainer}>
         <TrackInfo />
         <PlayerControls isPlaying={isPlaying} play={play} pause={pause} />
-        <Actions />
+        <Actions audio={audio} />
       </div>
     </main>
   );

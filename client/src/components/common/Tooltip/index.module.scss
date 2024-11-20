@@ -1,0 +1,18 @@
+.root {
+  position: relative;
+  cursor: pointer;
+  & > .tooltip {
+    display: none;
+    position: absolute;
+    bottom: 1.8rem;
+    right: -0.5rem;
+    background-color: var(--color-layout-04);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    border-radius: .3rem;
+    padding: .5rem;
+  }
+  &.focused > .tooltip {
+    display: block;
+  }
+}

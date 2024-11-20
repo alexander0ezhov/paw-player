@@ -20,24 +20,29 @@
       }
     }
   }
-  .progressBar {
+  .progressBar, .volume {
     font-size: 0.8rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    & > span {
+      padding-top: 0.15rem;
+    }
+  }
+  .progressBar {
     width: 100%;
     margin-bottom: 0.15rem;
-    & > span {
-      padding-top: 0.2rem;
-    }
   }
   .volumeTooltip {
     width: 1.3rem;
     height: 1.3rem;
     .volume {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      & > span {
+        width: 1.4rem;
+      }
+      input[type="range"] {
+        width: 7rem;
+      }
     }
   }
 }

@@ -47,7 +47,6 @@ const ProgressBar: React.FC<IProgressBarProps> = ({
       <span ref={currentTimeRef}>{nullTime}</span>
       <InputRange
         ref={inputRef}
-        className={className}
         type="range"
         min={0}
         max={currentTrack?.duration || 0}

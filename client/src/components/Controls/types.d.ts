@@ -24,3 +24,9 @@ interface IProgressBarProps extends IComponentProps {
   currentTrack?: TrackType;
   isPlaying: boolean;
 }
+
+interface IVolumeControlProps extends IComponentProps {
+  audio: HTMLAudioElement;
+}
+
+interface IActionsProps extends IVolumeControlProps {}
