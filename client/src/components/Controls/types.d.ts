@@ -1,3 +1,4 @@
+import React from "react";
 import { IComponentProps, TrackType } from "@root/global-types";
 
 interface IControlIconProps extends IComponentProps {
@@ -30,3 +31,14 @@ interface IVolumeControlProps extends IComponentProps {
 }
 
 interface IActionsProps extends IVolumeControlProps {}
+
+export enum VolumeIconTypes {
+  off = "off",
+  low = "low",
+  medium = "medium",
+  high = "high",
+}
+
+export interface IVolumeIconProps extends React.SVGProps<SVGSVGElement> {
+  volumeType: keyof typeof VolumeIconTypes;
+}
