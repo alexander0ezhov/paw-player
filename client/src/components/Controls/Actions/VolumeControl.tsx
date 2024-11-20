@@ -6,15 +6,17 @@ import s from "../index.module.scss";
 import InputRange from "@components/common/InputRange";
 
 const VolumeControl: React.FC<IVolumeControlProps> = ({ audio }) => {
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const currentVolumeRef = useRef<HTMLSpanElement | null>(null);
 
   useEffect(() => {
-    audio.onvolumechange = () => {
+    const onVolumeChange = () => {
       const volume = `${Math.floor(audio.volume * 100)}`;
       if (inputRef.current) inputRef.current.value = volume;
       if (currentVolumeRef.current) currentVolumeRef.current.innerText = volume;
     };
+    audio.onvolumechange = onVolumeChange;
+    setTimeout(onVolumeChange);
     return () => {
       audio.onvolumechange = null;
     };
