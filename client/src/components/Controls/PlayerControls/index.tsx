@@ -22,11 +22,12 @@ const PlayerControls: React.FC<IPlayerControlsProps> = ({
   play,
   pause,
   nextTrack,
+  prevTrack,
 }) => {
   return (
     <div className={cn(className, s.playerControls)}>
       <Shuffle {...smallControlsProps} />
-      <PrevTrack {...smallControlsProps} />
+      <PrevTrack {...smallControlsProps} onClick={prevTrack} />
       <PlayPauseButton
         className={globalcss.accentIcon}
         isPlaying={isPlaying}

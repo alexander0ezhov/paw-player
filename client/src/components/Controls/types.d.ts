@@ -18,6 +18,7 @@ interface IPlayerControlsProps extends IComponentProps {
   play: () => void;
   pause: () => void;
   nextTrack: () => void;
+  prevTrack: () => void;
   isPlaying: boolean;
 }
 

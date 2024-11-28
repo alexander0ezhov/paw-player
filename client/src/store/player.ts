@@ -19,6 +19,7 @@ type Actions = {
   pause: () => void;
   stop: () => void;
   nextTrack: () => void;
+  prevTrack: () => void;
 };
 
 export const usePlayerStore = create<State & Actions>((set, get) => {
@@ -69,6 +70,27 @@ export const usePlayerStore = create<State & Actions>((set, get) => {
     stop: () => {
       audio.pause();
       audio.currentTime = 0;
+    },
+    prevTrack: () => {
+      const { currentTrack, currentPlaylist, setCurrentTrack } = get();
+      const queue = currentTrack?.queue;
+      if (
+        audio.currentTime > 5 ||
+        !currentPlaylist ||
+        typeof queue !== "number" ||
+        queue === 0
+      ) {
+        audio.currentTime = 0;
+        return;
+      }
+
+      const newQueue = queue - 1;
+      const prevTrack = currentPlaylist.items[newQueue];
+      if (prevTrack) {
+        setCurrentTrack({ ...prevTrack, queue: newQueue });
+      } else {
+        audio.currentTime = 0;
+      }
     },
     nextTrack: () => {
       const {
