@@ -26,6 +26,16 @@ export const usePlayerStore = create<State & Actions>((set, get) => {
   const audio = new Audio();
   audio.onplay = () => set({ isPlaying: true });
   audio.onpause = () => set({ isPlaying: false });
+
+  navigator.mediaSession.setActionHandler("previoustrack", () => {
+    get().prevTrack();
+    console.log("Prev track clicked");
+  });
+  navigator.mediaSession.setActionHandler("nexttrack", () => {
+    get().nextTrack();
+    console.log("Next track clicked");
+  });
+
   return {
     audio,
     isPlaying: false,
