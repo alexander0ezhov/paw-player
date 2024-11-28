@@ -27,10 +27,19 @@ export type RoutingType = {
   route: keyof typeof Routes;
 };
 
+export enum RepeatTypes {
+  all = "all",
+  one = "one",
+  none = "none",
+}
+
+export type RepeatType = keyof typeof RepeatTypes;
+
 export type PlayerType = {
   audio: HTMLAudioElement;
   currentTrack?: TrackType;
   isPlaying: boolean;
+  repeatType: RepeatType;
   currentPlaylist?: PlaylistType;
 };
 
@@ -43,10 +52,10 @@ export type FileType = {
 
 export type TrackType = FileType & {
   src?: string;
-  queue?: number
+  queue?: number;
 };
 
 export type PlaylistType = {
   name: string;
   items: TrackType[];
-}
+};

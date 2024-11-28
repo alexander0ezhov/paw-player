@@ -17,6 +17,7 @@ type Actions = {
   ) => void;
   play: () => void;
   pause: () => void;
+  stop: () => void;
   nextTrack: () => void;
 };
 
@@ -29,6 +30,7 @@ export const usePlayerStore = create<State & Actions>((set, get) => {
     isPlaying: false,
     currentTrack: undefined,
     currentPlaylist: undefined,
+    repeatType: "none",
     setCurrentTrack: async (track) => {
       if (!track.src) {
         track.src = await window.node.readFileStream(track.path);
@@ -50,10 +52,12 @@ export const usePlayerStore = create<State & Actions>((set, get) => {
       const isNewPlaylist = playlist?.name !== currentPlaylist?.name;
       if (isNewPlaylist) {
         setCurrentPlaylist(playlist, { clearCurrentTrack: false });
-        track.queue =
-          playlist?.items.findIndex((item) => item.name === track.name) || 0;
       }
-      setCurrentTrack(track);
+      setCurrentTrack({
+        ...track,
+        queue:
+          playlist?.items.findIndex((item) => item.name === track.name) || 0,
+      });
     },
     play: () => {
       if (!get().currentTrack) return;
@@ -62,17 +66,30 @@ export const usePlayerStore = create<State & Actions>((set, get) => {
     pause: () => {
       audio.pause();
     },
+    stop: () => {
+      audio.pause();
+      audio.currentTime = 0;
+    },
     nextTrack: () => {
-      const { currentTrack, currentPlaylist, setCurrentTrack } = get();
-      console.log(currentTrack);
-      if (!currentPlaylist || !currentTrack?.queue) {
+      const {
+        currentTrack,
+        currentPlaylist,
+        setCurrentTrack,
+        repeatType,
+        stop,
+      } = get();
+      const queue = currentTrack?.queue;
+      if (!currentPlaylist || typeof queue !== "number") {
         return;
       }
-      const newQueue = currentTrack.queue + 1;
+      const newQueue = queue + 1;
       const nextTrack = currentPlaylist.items[newQueue];
       if (nextTrack) {
-        nextTrack.queue = newQueue;
-        setCurrentTrack(nextTrack);
+        setCurrentTrack({ ...nextTrack, queue: newQueue });
+      } else {
+        repeatType === "all"
+          ? setCurrentTrack({ ...currentPlaylist.items[0], queue: 0 })
+          : stop();
       }
     },
   };
