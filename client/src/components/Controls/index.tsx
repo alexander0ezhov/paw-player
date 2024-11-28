@@ -9,7 +9,8 @@ import ProgressBar from "./ProgressBar";
 import s from "./index.module.scss";
 
 const Controls: React.FC<IComponentProps> = ({ className }) => {
-  const { audio, currentTrack, isPlaying, play, pause } = usePlayerStore();
+  const { audio, currentTrack, isPlaying, play, pause, nextTrack } =
+    usePlayerStore();
   return (
     <main className={cn(s.root, className)}>
       <ProgressBar
@@ -19,7 +20,12 @@ const Controls: React.FC<IComponentProps> = ({ className }) => {
       />
       <div className={s.controlsContainer}>
         <TrackInfo />
-        <PlayerControls isPlaying={isPlaying} play={play} pause={pause} />
+        <PlayerControls
+          isPlaying={isPlaying}
+          play={play}
+          pause={pause}
+          nextTrack={nextTrack}
+        />
         <Actions audio={audio} />
       </div>
     </main>

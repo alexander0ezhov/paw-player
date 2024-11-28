@@ -12,8 +12,10 @@ import { TableItemType } from "@components/common/Table/types";
 
 const Files: React.FC<IComponentProps> = () => {
   const { filesList, getFiles, getDirectory } = useFilesStore();
-  const { setCurrentTrack, currentTrack, isPlaying, pause, play } =
+  const { setCurrentTrackWithPlaylist, currentTrack, isPlaying, pause, play } =
     usePlayerStore();
+
+  const playlist = { name: "Files", items: filesList };
 
   const columns = [
     {
@@ -22,13 +24,13 @@ const Files: React.FC<IComponentProps> = () => {
       width: "2rem",
       //TODO: memoize
       customRender: (item: TableItemType, hovered: boolean) => {
-        const isCurrentTrack = currentTrack?.path === item.path;
+        const isCurrentTrack = currentTrack?.path === item.path; //TODO: replace path by hash
         const isItemPlaying = isCurrentTrack && isPlaying;
         const onPlayPauseButtonClick = () => {
           if (isCurrentTrack) {
             return isPlaying ? pause() : play();
           }
-          return setCurrentTrack(item as TrackType);
+          return setCurrentTrackWithPlaylist(item as TrackType, playlist);
         };
         return (
           <PlayItem
@@ -53,7 +55,9 @@ const Files: React.FC<IComponentProps> = () => {
       <Table
         className={globalcss.mt1}
         columns={columns}
-        onItemDbClick={(item) => setCurrentTrack(item as TrackType)}
+        onItemDbClick={(item) =>
+          setCurrentTrackWithPlaylist(item as TrackType, playlist)
+        }
         keyColumn={"path"}
         items={filesList}
         // items={[

@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import Playlists from "@pages/Playlists";
 export interface IComponentProps {
   className?: string;
   style?: object;
@@ -30,6 +31,7 @@ export type PlayerType = {
   audio: HTMLAudioElement;
   currentTrack?: TrackType;
   isPlaying: boolean;
+  currentPlaylist?: PlaylistType;
 };
 
 export type FileType = {
@@ -41,4 +43,10 @@ export type FileType = {
 
 export type TrackType = FileType & {
   src?: string;
+  queue?: number
 };
+
+export type PlaylistType = {
+  name: string;
+  items: TrackType[];
+}
