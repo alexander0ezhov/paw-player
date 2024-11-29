@@ -6,6 +6,7 @@ import {
   RepeatType,
   RepeatTypes,
 } from "@root/global-types";
+import { setMediaMetadata } from "@utils/func";
 
 const repeatTypesList = Object.keys(RepeatTypes) as RepeatType[];
 
@@ -59,15 +60,7 @@ export const usePlayerStore = create<State & Actions>((set, get) => {
       }
       audio.src = track.src || "";
       set({ currentTrack: track });
-      navigator.mediaSession.metadata = new MediaMetadata({
-        title: track.name,
-        artist: track.name,
-        album: track.name,
-        artwork: [
-          // { src: "album-art.jpg", sizes: "96x96", type: "image/jpeg" },
-          // { src: "album-art-large.jpg", sizes: "512x512", type: "image/jpeg" },
-        ],
-      });
+      setMediaMetadata(track);
       get().play();
       // TODO: should save track to config in node
     },

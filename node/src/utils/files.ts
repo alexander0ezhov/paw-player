@@ -2,6 +2,8 @@ import fs from "fs";
 import MusicMetadata from "music-metadata";
 import { durationToTime } from "./func";
 
+const pathSplitter = new RegExp(/[\\,/]/);
+
 let MusicMetaDataModule: typeof MusicMetadata = null;
 export const loadMusicMetadataModule = async () => {
   if (!MusicMetaDataModule) {
@@ -25,7 +27,7 @@ export const readFileStream = (path: string): string => {
 };
 
 export const getFileMetaData = async (path: string) => {
-  const name = path.split("/").reverse()[0];
+  const name = path.split(pathSplitter).reverse()[0];
   const meta = await MusicMetaDataModule.parseFile(path);
   const { format } = meta;
   // console.dir("meta", meta);
