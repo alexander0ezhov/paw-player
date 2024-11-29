@@ -1,12 +1,9 @@
-import React from "react";
-import { IComponentProps, TrackType } from "@root/global-types";
+import React, { HTMLProps } from "react";
+import { IComponentProps, RepeatType, TrackType } from "@root/global-types";
 
-interface IControlIconProps extends IComponentProps {
-  width: number | string;
-  height: number | string;
+interface IControlIconProps extends HTMLProps<HTMLHtmlElement> {
+  repeatType: RepeatType;
 }
-
-type RepeatType = "all" | "one" | null;
 
 interface IPlayPauseButtonProps extends IComponentProps {
   onPlay: any;
@@ -20,6 +17,8 @@ interface IPlayerControlsProps extends IComponentProps {
   nextTrack: () => void;
   prevTrack: () => void;
   isPlaying: boolean;
+  repeatType: RepeatType;
+  toggleRepeatType: () => void;
 }
 
 interface IProgressBarProps extends IComponentProps {

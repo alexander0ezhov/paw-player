@@ -12,6 +12,7 @@ import { ReactComponent as PauseOutline } from "./pause-outline.svg";
 import { ReactComponent as NextTrack } from "./next-track.svg";
 import { ReactComponent as PrevTrack } from "./prev-track.svg";
 import { ReactComponent as Repeat } from "./repeat.svg";
+import { ReactComponent as RepeatOff } from "./repeat-off.svg";
 import { ReactComponent as RepeatOne } from "./repeat-one.svg";
 import { ReactComponent as VolumeOff } from "./volume-off.svg";
 import { ReactComponent as VolumeUp } from "./volume-up.svg";
@@ -35,6 +36,7 @@ export {
   PauseOutline,
   NextTrack,
   PrevTrack,
+  RepeatOff,
   Repeat,
   RepeatOne,
   VolumeOff,

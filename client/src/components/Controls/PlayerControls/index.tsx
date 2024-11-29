@@ -23,6 +23,8 @@ const PlayerControls: React.FC<IPlayerControlsProps> = ({
   pause,
   nextTrack,
   prevTrack,
+  repeatType,
+  toggleRepeatType,
 }) => {
   return (
     <div className={cn(className, s.playerControls)}>
@@ -35,7 +37,11 @@ const PlayerControls: React.FC<IPlayerControlsProps> = ({
         onPause={pause}
       />
       <NextTrack {...smallControlsProps} onClick={nextTrack} />
-      <RepeatButton {...smallControlsProps} />
+      <RepeatButton
+        {...smallControlsProps}
+        repeatType={repeatType}
+        onClick={toggleRepeatType}
+      />
     </div>
   );
 };

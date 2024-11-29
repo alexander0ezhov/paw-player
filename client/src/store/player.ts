@@ -1,5 +1,13 @@
 import { create } from "zustand";
-import { PlayerType, PlaylistType, TrackType } from "@root/global-types";
+import {
+  PlayerType,
+  PlaylistType,
+  TrackType,
+  RepeatType,
+  RepeatTypes,
+} from "@root/global-types";
+
+const repeatTypesList = Object.keys(RepeatTypes) as RepeatType[];
 
 type State = PlayerType;
 type Actions = {
@@ -20,6 +28,8 @@ type Actions = {
   stop: () => void;
   nextTrack: () => void;
   prevTrack: () => void;
+  setRepeatType: (repeatType: RepeatType) => void;
+  toggleRepeatType: () => void;
 };
 
 export const usePlayerStore = create<State & Actions>((set, get) => {
@@ -132,6 +142,18 @@ export const usePlayerStore = create<State & Actions>((set, get) => {
           ? setCurrentTrack({ ...currentPlaylist.items[0], queue: 0 })
           : stop();
       }
+    },
+    setRepeatType: (repeatType) => {
+      set({ repeatType });
+    },
+    toggleRepeatType: () => {
+      const prevRepeatType = get().repeatType;
+      const prevRepeatTypeIndex = repeatTypesList.indexOf(prevRepeatType);
+      const newRepeatType =
+        repeatTypesList[
+          prevRepeatTypeIndex < 0 ? 0 : prevRepeatTypeIndex + 1
+        ] || repeatTypesList[0];
+      set({ repeatType: newRepeatType });
     },
   };
 });
