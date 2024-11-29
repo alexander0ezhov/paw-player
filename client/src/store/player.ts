@@ -131,9 +131,9 @@ export const usePlayerStore = create<State & Actions>((set, get) => {
       if (nextTrack) {
         setCurrentTrack({ ...nextTrack, queue: newQueue });
       } else {
-        repeatType === "all"
-          ? setCurrentTrack({ ...currentPlaylist.items[0], queue: 0 })
-          : stop();
+        repeatType === "none"
+          ? stop()
+          : setCurrentTrack({ ...currentPlaylist.items[0], queue: 0 });
       }
     },
     setRepeatType: (repeatType) => {
