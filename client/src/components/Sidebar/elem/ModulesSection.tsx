@@ -1,4 +1,5 @@
 import React from "react";
+import cn from "classnames";
 import ModuleItem from "@components/Sidebar/elem/ModuleItem";
 import { IComponentProps, Routes } from "@root/global-types";
 import { useRoutingStore } from "@store/routing";
@@ -30,13 +31,16 @@ const items = [
 ];
 
 const ModulesSection: React.FC<IComponentProps> = () => {
-  const { redirect } = useRoutingStore();
+  const { route, redirect } = useRoutingStore();
   return (
     <ul className={s.modulesSection}>
       {items.map((item) => (
         <ModuleItem
           key={item.name}
-          className={item.isInBottom && s.bottomItem}
+          className={cn(
+            item.isInBottom && s.bottomItem,
+            route === item.route && s.active,
+          )}
           icon={item.icon}
           name={item.name}
           onClick={() => {
