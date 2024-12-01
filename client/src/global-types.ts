@@ -48,6 +48,14 @@ export type FileType = {
   path: string;
   duration?: number;
   clientDuration?: string;
+  title?: string;
+  artists?: string[];
+  artist?: string;
+  album?: string;
+  genre?: string;
+  year?: string;
+  picture?: any;
+  pictureLink?: string;
 };
 
 export type TrackType = FileType & {

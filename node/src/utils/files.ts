@@ -1,8 +1,7 @@
 import fs from "fs";
+import path from "path";
 import MusicMetadata from "music-metadata";
 import { durationToTime } from "./func";
-
-const pathSplitter = new RegExp(/[\\,/]/);
 
 let MusicMetaDataModule: typeof MusicMetadata = null;
 export const loadMusicMetadataModule = async () => {
@@ -26,15 +25,28 @@ export const readFileStream = (path: string): string => {
   return "data:audio/mp3;base64," + file.toString("base64");
 };
 
-export const getFileMetaData = async (path: string) => {
-  const name = path.split(pathSplitter).reverse()[0];
-  const meta = await MusicMetaDataModule.parseFile(path);
-  const { format } = meta;
-  // console.dir("meta", meta);
+export const preparePicture = (picture: MusicMetadata.IPicture[]) =>
+  picture?.map((pic) => ({
+    ...pic,
+    data: URL.createObjectURL(new Blob([pic.data])),
+  }));
+
+export const getFileMetaData = async (filePath: string) => {
+  const name = filePath.split(path.sep).reverse()[0];
+  const meta = await MusicMetaDataModule.parseFile(filePath);
+  const { format, common } = meta;
+  const { title, artists, artist, album, genre, year, picture } = common || {};
   return {
-    path,
+    path: filePath,
     name,
     duration: format.duration,
     clientDuration: durationToTime(format.duration),
+    title,
+    artists,
+    artist,
+    album,
+    genre,
+    year,
+    picture,
   };
 };

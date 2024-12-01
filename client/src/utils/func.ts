@@ -26,15 +26,26 @@ export const secondsToTime = (duration: number) =>
     .toString()
     .padStart(2, "0")}`;
 
+const defaultArtwork = [
+  { src: Artwork128.default, sizes: "128x128", type: "image/png" },
+  { src: Artwork256.default, sizes: "256x256", type: "image/png" },
+  { src: Artwork512.default, sizes: "512x512", type: "image/png" },
+];
+
 export const setMediaMetadata = (track: TrackType) => {
+  const mainPicture = track.picture?.[0];
   navigator.mediaSession.metadata = new MediaMetadata({
-    title: track.name,
-    artist: track.name,
-    album: track.name,
-    artwork: [
-      { src: Artwork128.default, sizes: "128x128", type: "image/png" },
-      { src: Artwork256.default, sizes: "256x256", type: "image/png" },
-      { src: Artwork512.default, sizes: "512x512", type: "image/png" },
-    ],
+    title: track.title || track.name,
+    artist: track.artist,
+    album: track.album,
+    artwork: mainPicture
+      ? [
+          {
+            src: mainPicture.data,
+            sizes: "128x128", // TODO: sizes
+            type: mainPicture.format,
+          },
+        ]
+      : defaultArtwork,
   });
 };
