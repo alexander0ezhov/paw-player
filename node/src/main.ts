@@ -1,13 +1,23 @@
 import path from "path";
 import { app, BrowserWindow, ipcMain, dialog } from "electron";
 import {
+  createFolder,
   getFileMetaData,
   loadDataFromJson,
   loadMusicMetadataModule,
   saveDataToJson,
 } from "./utils/files";
 
+/* Consts */
 const isDev: boolean = process.env.NODE_ENV === "development";
+const USERDATA_PATH = app.getPath("userData");
+const CONFIG_FOLDER_NAME = "_config";
+const CONFIG_FOLDER = path.join(USERDATA_PATH, CONFIG_FOLDER_NAME);
+
+const onInit = async () => {
+  await loadMusicMetadataModule();
+  await createFolder(CONFIG_FOLDER);
+};
 
 const createWindow = (): void => {
   const win = new BrowserWindow({
@@ -27,23 +37,21 @@ const createWindow = (): void => {
     : win.loadFile("./client/dist/index.html");
 };
 
-app.whenReady().then(() => {
-  loadMusicMetadataModule();
-  createWindow();
+app
+  .whenReady()
+  .then(onInit)
+  .then(() => {
+    console.log("afterInit");
+    createWindow();
 
-  app.on("activate", () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+    app.on("activate", () => {
+      if (BrowserWindow.getAllWindows().length === 0) createWindow();
+    });
   });
-});
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
 });
-
-/* Consts */
-
-const USERDATA_PATH = app.getPath("userData");
-const USERDATA_PATH_WITH_SEP = `${USERDATA_PATH}${path.sep}`;
 
 /* Handlers */
 
@@ -65,12 +73,11 @@ ipcMain.handle("get-music-files", async () => {
 ipcMain.handle(
   "save-userdata",
   async (e, { name, data }: { name: string; data: string }) => {
-    console.log(name, data);
-    saveDataToJson(`${USERDATA_PATH_WITH_SEP}${name}.json`, data);
+    saveDataToJson(path.join(CONFIG_FOLDER, `${name}.json`), data);
     return null;
   },
 );
 
 ipcMain.handle("load-userdata", async (e, { name }: { name: string }) => {
-  return loadDataFromJson(`${USERDATA_PATH_WITH_SEP}${name}.json`);
+  return loadDataFromJson(path.join(CONFIG_FOLDER, `${name}.json`));
 });

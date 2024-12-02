@@ -11,6 +11,12 @@ export const loadMusicMetadataModule = async () => {
   return MusicMetaDataModule;
 };
 
+export const createFolder = async (folderPath: string) => {
+  if (!fs.existsSync(folderPath)) {
+    fs.mkdirSync(folderPath);
+  }
+};
+
 export const getFiles = (): fs.Dirent[] => {
   const files = fs.readdirSync(__dirname, {
     withFileTypes: true,
