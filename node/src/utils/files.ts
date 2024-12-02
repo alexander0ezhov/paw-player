@@ -50,3 +50,14 @@ export const getFileMetaData = async (filePath: string) => {
     picture,
   };
 };
+
+export const saveDataToJson = (path: string, data: string) => {
+  fs.writeFileSync(path, data);
+};
+
+export const loadDataFromJson = (path: string) =>
+  fs.readFileSync(path, { encoding: "utf-8" });
+
+/* Types */
+
+export type FileMetaDataType = Awaited<ReturnType<typeof getFileMetaData>>;
