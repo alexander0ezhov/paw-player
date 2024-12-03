@@ -67,3 +67,15 @@ export type PlaylistType = {
   name: string;
   items: TrackType[];
 };
+
+export type ExposedNodeType = {
+  test: () => void;
+  getFiles: () => FileType[];
+  readFileStream: (path: string) => string;
+  getMusicFiles: () => Promise<FileType[]>;
+  getMusicDirectory: () => Promise<FileType[]>;
+  saveUserData: (name: string, data: object) => Promise<any>;
+  loadUserData: (name: string) => Promise<any>;
+};
+
+declare var node: ExposedNodeType;

@@ -6,7 +6,11 @@ import {
   RepeatType,
   RepeatTypes,
 } from "@root/global-types";
-import { setMediaMetadata } from "@utils/func";
+import { createDebounce, setMediaMetadata } from "@utils/func";
+
+const debounce = createDebounce();
+
+const STORE_NAME = "playerStore";
 
 const repeatTypesList = Object.keys(RepeatTypes) as RepeatType[];
 
@@ -31,6 +35,12 @@ type Actions = {
   prevTrack: () => void;
   setRepeatType: (repeatType: RepeatType) => void;
   toggleRepeatType: () => void;
+};
+
+const saveStoreData = async (storeData: State & Actions) => {
+  const { repeatType, currentPlaylist } = storeData;
+  const dataToSave = { repeatType, currentPlaylist };
+  return await window.node.saveUserData(STORE_NAME, dataToSave);
 };
 
 export const usePlayerStore = create<State & Actions>((set, get) => {
@@ -138,6 +148,7 @@ export const usePlayerStore = create<State & Actions>((set, get) => {
     },
     setRepeatType: (repeatType) => {
       set({ repeatType });
+      debounce(saveStoreData.bind(null, get()), 5000);
     },
     toggleRepeatType: () => {
       const prevRepeatType = get().repeatType;
@@ -146,7 +157,7 @@ export const usePlayerStore = create<State & Actions>((set, get) => {
         repeatTypesList[
           prevRepeatTypeIndex < 0 ? 0 : prevRepeatTypeIndex + 1
         ] || repeatTypesList[0];
-      set({ repeatType: newRepeatType });
+      get().setRepeatType(newRepeatType);
     },
   };
 });

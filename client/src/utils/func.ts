@@ -11,13 +11,21 @@ export const checkThemeModeFromDOM = () =>
   document.body.dataset.theme as SettingsType["themeMode"];
 
 export const createInterval = () => {
-  let interval: ReturnType<typeof setInterval> | null;
+  let interval: ReturnType<typeof setInterval> | null = null;
   return {
     action: (action: () => void, delay: number = 1000) => {
       if (interval) clearInterval(interval);
       interval = setInterval(action, delay);
     },
     clear: () => interval && clearInterval(interval),
+  };
+};
+
+export const createDebounce = () => {
+  let timeout: ReturnType<typeof setTimeout> | null = null;
+  return (action: () => any, delay: number = 1000) => {
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(action, delay);
   };
 };
 
