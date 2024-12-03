@@ -38,8 +38,12 @@ type Actions = {
 };
 
 const saveStoreData = async (storeData: State & Actions) => {
-  const { repeatType, currentPlaylist } = storeData;
-  const dataToSave = { repeatType, currentPlaylist };
+  const { repeatType, currentTrack, currentPlaylist } = storeData;
+  const dataToSave = {
+    repeatType,
+    currentTrackPAth: currentTrack?.path,
+    currentPlaylistName: currentPlaylist?.name,
+  };
   return await window.node.saveUserData(STORE_NAME, dataToSave);
 };
 
@@ -73,12 +77,14 @@ export const usePlayerStore = create<State & Actions>((set, get) => {
       setMediaMetadata(track);
       get().play();
       // TODO: should save track to config in node
+      debounce(saveStoreData.bind(null, get()), 10000);
     },
     setCurrentPlaylist: async (playlist, opts) => {
       const clearCurrentTrack = !opts || opts.clearCurrentTrack;
       clearCurrentTrack
         ? set({ currentPlaylist: playlist, currentTrack: undefined })
         : set({ currentPlaylist: playlist });
+      debounce(saveStoreData.bind(null, get()), 10000);
     },
     setCurrentTrackWithPlaylist: async (track, playlist) => {
       const { currentPlaylist, setCurrentPlaylist, setCurrentTrack } = get();
