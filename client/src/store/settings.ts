@@ -12,7 +12,12 @@ type Actions = {
   toggleThemeMode: () => void;
 };
 
-// const settings = getSettings();
+const getStoreData = async () => await window.node.loadUserData(STORE_NAME);
+
+const handleAfterStoreChange = (store: State & Actions) => {
+  setThemeModeToDOM(store.themeMode);
+};
+
 const settings = defaultSettings as State;
 setThemeModeToDOM(settings.themeMode);
 
@@ -22,17 +27,23 @@ const saveStoreData = async (storeData: State & Actions) => {
   return await window.node.saveUserData(STORE_NAME, dataToSave);
 };
 
-export const useSettingsStore = create<State & Actions>((set, get) => ({
-  ...settings,
-  setThemeMode: (themeMode) => {
-    set({ themeMode });
-    setThemeModeToDOM(themeMode);
-    debounce(saveStoreData.bind(null, get()), 5000);
-  },
-  toggleThemeMode: () => {
-    const { themeMode, setThemeMode } = get();
-    const newThemeMode =
-      themeMode === ThemeModes.light ? ThemeModes.dark : ThemeModes.light;
-    setThemeMode(newThemeMode);
-  },
-}));
+export const useSettingsStore = create<State & Actions>((set, get) => {
+  getStoreData().then((result) => {
+    set({ themeMode: result.themeMode });
+    handleAfterStoreChange(get());
+  });
+  return {
+    ...settings,
+    setThemeMode: (themeMode) => {
+      set({ themeMode });
+      handleAfterStoreChange(get());
+      debounce(saveStoreData.bind(null, get()), 5000);
+    },
+    toggleThemeMode: () => {
+      const { themeMode, setThemeMode } = get();
+      const newThemeMode =
+        themeMode === ThemeModes.light ? ThemeModes.dark : ThemeModes.light;
+      setThemeMode(newThemeMode);
+    },
+  };
+});
