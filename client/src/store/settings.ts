@@ -13,7 +13,8 @@ const debounce = createDebounce();
 const STORE_NAME = "settingsStore";
 const settings = defaultSettings as State;
 
-const getStoreData = window.node.loadUserData.bind(null, STORE_NAME);
+const getStoreData: () => Promise<Partial<State>> =
+  window.node.loadUserData.bind(null, STORE_NAME);
 const saveStoreData = async (storeData: State & Actions) => {
   const { themeMode } = storeData;
   const dataToSave = { themeMode };

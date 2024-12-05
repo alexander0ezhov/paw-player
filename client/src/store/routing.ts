@@ -10,7 +10,8 @@ type Actions = {
 const debounce = createDebounce();
 const STORE_NAME = "routingStore";
 
-const getStoreData = window.node.loadUserData.bind(null, STORE_NAME);
+const getStoreData: () => Promise<Partial<State>> =
+  window.node.loadUserData.bind(null, STORE_NAME);
 const saveStoreData = async (storeData: State & Actions) => {
   const { route } = storeData;
   const dataToSave = { route };
