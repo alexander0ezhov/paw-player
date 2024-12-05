@@ -3,24 +3,17 @@ import defaultSettings from "@root/default-settings.json";
 import { ThemeModes, SettingsType } from "@root/global-types";
 import { createDebounce, setThemeModeToDOM } from "@utils/func";
 
-const debounce = createDebounce();
-const STORE_NAME = "settingsStore";
-
 type State = SettingsType;
 type Actions = {
   setThemeMode: (themeMode: SettingsType["themeMode"]) => void;
   toggleThemeMode: () => void;
 };
 
-const getStoreData = async () => await window.node.loadUserData(STORE_NAME);
-
-const handleAfterStoreChange = (store: State & Actions) => {
-  setThemeModeToDOM(store.themeMode);
-};
-
+const debounce = createDebounce();
+const STORE_NAME = "settingsStore";
 const settings = defaultSettings as State;
-setThemeModeToDOM(settings.themeMode);
 
+const getStoreData = window.node.loadUserData.bind(null, STORE_NAME);
 const saveStoreData = async (storeData: State & Actions) => {
   const { themeMode } = storeData;
   const dataToSave = { themeMode };
@@ -28,16 +21,11 @@ const saveStoreData = async (storeData: State & Actions) => {
 };
 
 export const useSettingsStore = create<State & Actions>((set, get) => {
-  getStoreData().then((result) => {
-    set({ themeMode: result.themeMode });
-    handleAfterStoreChange(get());
-  });
+  getStoreData().then(set);
   return {
     ...settings,
     setThemeMode: (themeMode) => {
       set({ themeMode });
-      handleAfterStoreChange(get());
-      debounce(saveStoreData.bind(null, get()), 5000);
     },
     toggleThemeMode: () => {
       const { themeMode, setThemeMode } = get();
@@ -46,4 +34,9 @@ export const useSettingsStore = create<State & Actions>((set, get) => {
       setThemeMode(newThemeMode);
     },
   };
+});
+
+useSettingsStore.subscribe((store, prevStore) => {
+  setThemeModeToDOM(store.themeMode);
+  debounce(saveStoreData.bind(null, store), 5000);
 });
