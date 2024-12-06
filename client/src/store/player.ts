@@ -37,7 +37,6 @@ const repeatTypesList = Object.keys(RepeatTypes) as RepeatType[];
 
 const getStoreData: () => Promise<Partial<State>> =
   window.node.loadUserData.bind(null, STORE_NAME);
-
 const saveStoreData = async (storeData: Partial<State>) => {
   const { repeatType, currentTrack, currentPlaylist } = storeData;
   const dataToSave = {
